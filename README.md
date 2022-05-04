@@ -110,12 +110,13 @@ Optional:
 | suggestion     | Suggestion     | suggestions specific to this post
 
 
-* Emotion
+* Emoji
 
 | Property | Type | Description |
 | -------- | -------- | -------- |
 | emoji     | String     | an icon to visually describe the emotion      |
 | rating     | Number     | the level of how the user is feeling certain emotion on a scale of 1-5    |
+| adjective | String | a keyword to describe what emotion that emoji represents
 
 
 * Suggestion
