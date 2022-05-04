@@ -128,9 +128,26 @@ Optional:
 | advice     | String   | useful tips on what to do to get rid of bad emotion or how to keep a positive mindset   |
 
 
-
 ### Networking
-- Optional API:
+Login Screen
+* (Create) Sign up with username and password
+* (Get) Sign up with username and password
+
+Past Journal Stream Screen
+* (Read/GET) Query all posts where user is author
+
+
+Compose Screen
+* (Create/POST) Create a new post
+
+
+Suggestions Screen
+* (Get) Call from api suggestions related to user emotion/topic (MVP hardcode)
+
+Search for emoji Screen
+* (Get) Get emoji related to the keyword
+
+### Optional API:
     - [Login using Google](https://developers.google.com/identity/sign-in/android/sign-in)
     - [Spotify API](https://developer.spotify.com/documentation/android/quick-start/)
     - [Emotion analysis](https://www.twinword.com/api/emotion-analysis.php)
