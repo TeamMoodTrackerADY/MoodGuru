@@ -85,7 +85,11 @@ Optional:
 
 **Flow Navigation** (Screen to Screen)
 
-* Compose -> Choose adjective & rating -> Write journal -> Read Suggestion -> Journal
+- Login/ Sign up -> Dashboard -> Compose -> Emojis & Ratings -> Compose Journal -> Suggestions
+
+- Dashboard -> Detailed Journal
+
+- (Optional) Emojis & Ratings -> Add emojis -> Customize emojis
 
 
 ## Wireframes
