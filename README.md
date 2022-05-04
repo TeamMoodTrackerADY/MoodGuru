@@ -148,7 +148,7 @@ Search for emoji Screen
 * (Get) Get emoji related to the keyword
 
 ### Optional API:
-    - [Login using Google](https://developers.google.com/identity/sign-in/android/sign-in)
-    - [Spotify API](https://developer.spotify.com/documentation/android/quick-start/)
-    - [Emotion analysis](https://www.twinword.com/api/emotion-analysis.php)
-    - [Topic extracter](https://www.twinword.com/api/topic-tagging.php)
+* [Login using Google](https://developers.google.com/identity/sign-in/android/sign-in)
+* [Spotify API](https://developer.spotify.com/documentation/android/quick-start/)
+* [Emotion analysis](https://www.twinword.com/api/emotion-analysis.php)
+* [Topic extracter](https://www.twinword.com/api/topic-tagging.php)
