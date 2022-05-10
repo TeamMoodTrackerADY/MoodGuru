@@ -113,7 +113,7 @@ Optional:
 | suggestion     | Suggestion     | suggestions specific to this post
 
 
-* Emoji
+* Emotion
 
 | Property | Type | Description |
 | -------- | -------- | -------- |
