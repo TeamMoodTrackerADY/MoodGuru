@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MoodGuru</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Paste BOTH strings as required -->
+    <string name="back4app_app_id">nCDU7CR2n9TZbfApy3IqdGQ8Ag9JGooOchQtUp11</string>
+    <string name="back4app_client_key">42Jh1wPcU8JXm5R0i752YSJEdt7JiPfaw5Fy4pob</string>
+
 </resources>
