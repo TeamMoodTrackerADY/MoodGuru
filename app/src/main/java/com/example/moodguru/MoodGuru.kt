@@ -1,11 +1,15 @@
 package com.example.moodguru
 
 import android.app.Application
+import com.example.moodguru.parseDataModel.Post
 import com.parse.Parse
+import com.parse.ParseObject
 
 class MoodGuru : Application() {
     override fun onCreate() {
         super.onCreate()
+        ParseObject.registerSubclass(Post::class.java)
+
         Parse.initialize(
             Parse.Configuration.Builder(this)
                 .applicationId(getString(R.string.back4app_app_id))
