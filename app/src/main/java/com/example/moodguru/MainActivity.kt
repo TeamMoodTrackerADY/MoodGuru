@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         firstObject.put("message","Hey ! First message from android. Parse is now connected")
         firstObject.saveInBackground(object : SaveCallback{
             override fun done(e: ParseException?) {
-                if (e != null){
+                if (e == null){
                     Log.d("good", "done: ")
                 }else{
                     Log.e("bad", "error $e")
