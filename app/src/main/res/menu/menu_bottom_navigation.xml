@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_dashboard"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title=""
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_compose"
+        android:icon="@drawable/ic_baseline_add_box_24"
+        android:title=""
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_chart"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
+        android:title=""
+        app:showAsAction="always" />
+
+
+</menu>
