@@ -1,33 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".fragments.EmotionFragment">
 
-
-    <SearchView
-        android:id="@+id/searchBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:queryHint="How do you feel right now?" />
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_emoji_placeholder"
-        android:id="@+id/ivEmoji"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/searchBar"/>
-
-    <EditText
-        android:id="@+id/etJournalContent"
-        android:layout_below="@id/ivEmoji"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        android:id="@+id/rvEmotions"/>
 
 
 </RelativeLayout>

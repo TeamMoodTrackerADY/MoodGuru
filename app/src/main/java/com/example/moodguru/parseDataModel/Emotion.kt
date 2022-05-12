@@ -1,17 +1,18 @@
 package com.example.moodguru.parseDataModel
 
 import com.parse.ParseClassName
+import com.parse.ParseFile
 import com.parse.ParseObject
 
 @ParseClassName("Emotion")
-class Emotion(val _adjective: String, val _emoji: String, val _rating: Int): ParseObject() {
+class Emotion : ParseObject() {
 
     companion object{
         val KEY_ADJ = "adjective"
         val KEY_EMOJI = "emoji"
-        val KEY_RATING = "rating"
-
     }
 
+    fun getAdjective() = getString(KEY_ADJ)
+    fun getEmoji() = getParseFile(KEY_EMOJI)
 
 }

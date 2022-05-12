@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.moodguru.fragments.ChartFragment
+import com.example.moodguru.fragments.ComposeFragment
 import com.example.moodguru.fragments.DashboardFragment
 import com.example.moodguru.fragments.EmotionFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
                 // compose button listener
                 R.id.action_compose -> {
-                    fragmentToShow = EmotionFragment()
+                    fragmentToShow = ComposeFragment()
                     // Toast.makeText(this, "Compose", Toast.LENGTH_SHORT).show()
                 }
 
