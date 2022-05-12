@@ -14,6 +14,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // bottom navigator test
+        goToMainActivity()
         // Check if user is logged in. If yes, take them to main activity
         if (ParseUser.getCurrentUser() != null) {
             goToMainActivity()
