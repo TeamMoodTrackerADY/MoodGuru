@@ -74,11 +74,11 @@ class SuggestionActivity : AppCompatActivity() {
         val request = JsonObjectRequest(Request.Method.GET, url, null, {
                 response -> try {
                     val jsonArray = response.getJSONArray("quotes")
-                    val randomIndex = Random.nextInt(jsonArray.length())
+                    val randomIndex = (0..jsonArray.length()).shuffled().first()
 
-                    val randomQuote = jsonArray.getJSONObject(randomIndex)
-                    val quote = randomQuote.getString("quote")
-                    val author = randomQuote.getString("author")
+                    var randomQuote = jsonArray.getJSONObject(randomIndex)
+                    var quote = randomQuote.getString("quote")
+                    var author = randomQuote.getString("author")
                     tvQuote.text = quote
                     tvQuoteAuthor.text = author
                 }
