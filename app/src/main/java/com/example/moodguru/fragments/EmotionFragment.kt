@@ -92,6 +92,7 @@ class EmotionFragment : DialogFragment() {
             }
         }
 
+        // TODO: emotion dialog not show itself, violate SRP
         fun showEmotionFragment(fragmentManager: FragmentManager) {
             val emotionFragment = newInstance()
             emotionFragment.show(fragmentManager, TAG)

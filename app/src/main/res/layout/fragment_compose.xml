@@ -17,28 +17,36 @@
 
     <ImageView
         android:id="@+id/ivEmoji"
-        android:layout_marginVertical="50dp"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/tvPrompt"
-        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:src="@drawable/ic_emoji_placeholder" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="joyyyyy"
+        android:textSize="18sp"
+        android:id="@+id/tvEmotionLabel"
+        android:layout_below="@id/ivEmoji"
+        android:layout_centerHorizontal="true"/>
 
     <EditText
         android:id="@+id/etJournalContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/btnContinue"
-        android:layout_below="@id/ivEmoji"
-        android:hint="What makes you feel [surprised]?"
+        android:layout_below="@id/tvEmotionLabel"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/journal_border"
         android:ems="10"
         android:gravity="top|start"
+        android:hint="Howdy"
         android:inputType="textMultiLine"
         android:padding="10dp" />
 
