@@ -1,6 +1,7 @@
 package com.example.moodguru
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moodguru.parseDataModel.Emotion
 
-class EmotionAdapter(val context: Context, val emotionList: MutableList<Emotion>): RecyclerView.Adapter<EmotionAdapter.ViewHolder>() {
+class EmotionAdapter(val context: Context, val emotionList: MutableList<Emotion>, val onSelectHandler: OnSelectHandler)
+    : RecyclerView.Adapter<EmotionAdapter.ViewHolder>() {
 
+    val TAG = "EmotionAdapter"
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    interface OnSelectHandler{
+        fun onSelect(emotion: Emotion)
+    }
+
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val ivEmoji: ImageView
         val tvEmojiAdj: TextView
 
@@ -29,6 +36,10 @@ class EmotionAdapter(val context: Context, val emotionList: MutableList<Emotion>
                 .load(emotion.getEmoji()?.url)
                 .override(80, 80)
                 .into(ivEmoji)
+            itemView.setOnClickListener {
+                onSelectHandler.onSelect(emotion)
+                Log.d(TAG, "bindDataAndMethod: " + emotion.getAdjective())
+            }
         }
     }
 
