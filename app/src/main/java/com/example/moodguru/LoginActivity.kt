@@ -49,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
                 goToMainActivity()
             } else {
                 // Signup failed.  Look at the ParseException to see what happened.
+                Log.e(TAG, "login: failed", e)
                 e.printStackTrace()
                 Toast.makeText(this, "Error logging in. Please try again!", Toast.LENGTH_SHORT).show()
             }})
@@ -67,11 +68,13 @@ class LoginActivity : AppCompatActivity() {
             if (e == null) {
                 // User has successfully created a new account
                 // Show a toast to indicate user successfully signed up for an account
+                Log.d(TAG, "signUpUser: success")
                 Toast.makeText(this, "Sign up successfully!", Toast.LENGTH_SHORT).show()
                 goToMainActivity()
             } else {
                 // Show a toast to tell user that sign up was not successful
                 e.printStackTrace()
+                Log.e(TAG, "signUpUser: failed", e)
                 Toast.makeText(this, "Sign up was unsuccessful!", Toast.LENGTH_SHORT).show()
             }
         }
