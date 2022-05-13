@@ -31,11 +31,18 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+
+
         // Bottom Navigator on item click listener (dashboard/compose/chart)
         val fragmentManager = supportFragmentManager
         val btmNavi = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        lateinit var fragmentToShow: Fragment
+
+
         btmNavi.setOnItemSelectedListener { item ->
-            lateinit var fragmentToShow: Fragment
+
             when (item.itemId){
                 // dashboard button listener
                 R.id.action_dashboard -> {
@@ -54,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                     fragmentToShow = ChartFragment()
                     // Toast.makeText(this, "Chart", Toast.LENGTH_SHORT).show()
                 }
-                else -> fragmentToShow = DashboardFragment()
+                else -> fragmentToShow = ComposeFragment()
             }
             fragmentManager.beginTransaction().replace(R.id.frgContainer, fragmentToShow).commit()
 
@@ -62,7 +69,14 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        // default
         btmNavi.selectedItemId = R.id.action_compose
+
+        // if get signal from suggestion activity, land on dashboard
+        if (intent.getStringExtra("signal").equals("from suggestion")){
+            btmNavi.selectedItemId = R.id.action_dashboard
+        }
+
 
 
     }

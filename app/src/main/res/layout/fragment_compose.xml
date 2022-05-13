@@ -6,14 +6,14 @@
     tools:context=".fragments.ComposeFragment">
 
     <TextView
+        android:id="@+id/tvPrompt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvPrompt"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
         android:text="How do you feel right now?"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
         android:textAlignment="center"
-        android:layout_marginTop="10dp"/>
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
 
     <ImageView
         android:id="@+id/ivEmoji"
