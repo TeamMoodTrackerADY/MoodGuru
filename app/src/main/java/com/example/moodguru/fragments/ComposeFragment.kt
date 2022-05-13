@@ -30,7 +30,5 @@ class ComposeFragment : Fragment() {
         ivEmoji.setOnClickListener {
             EmotionFragment.showEmotionFragment(requireActivity().supportFragmentManager)
         }
-
-
     }
 }

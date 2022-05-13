@@ -63,7 +63,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         btmNavi.selectedItemId = R.id.action_compose
-
-
     }
 }
