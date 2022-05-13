@@ -9,9 +9,6 @@ import android.widget.TextView
 import com.example.moodguru.R
 
 class DashboardFragment : Fragment() {
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,20 +19,5 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tvAdvice1 = view.findViewById<TextView>(R.id.tvSuggestion1)
-        val tvAdvice2 = view.findViewById<TextView>(R.id.tvSuggestion2)
-        val tvAdvice3 = view.findViewById<TextView>(R.id.tvSuggestion3)
-
-        fetchSuggestion()
-    }
-
-    private fun fetchSuggestion() {
-        // TODO: query for advice whose 'adjective' equals 'sad' (constraint)
-
-        // TODO: return a list of such query
-
-        // TODO: randomized index, choose 3 distinct from X
-
-        // TODO: glue the 3 advice to Suggestions TextView
     }
 }
