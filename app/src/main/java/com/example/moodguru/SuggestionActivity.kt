@@ -1,25 +1,37 @@
 package com.example.moodguru
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.example.moodguru.fragments.EmotionFragment
 import com.example.moodguru.parseDataModel.Advice
 import com.parse.ParseQuery
+import org.json.JSONException
 import kotlin.random.Random
 
 class SuggestionActivity : AppCompatActivity() {
 
     lateinit var rvSuggestions: RecyclerView
     lateinit var suggestionAdapter: SuggestionAdapter
+    lateinit var quoteQueue: RequestQueue
+    lateinit var tvQuote: TextView
+    lateinit var tvQuoteAuthor: TextView
+
+    private var requestQueue: RequestQueue? = null
+
     val suggestionList: MutableList<Advice> = mutableListOf()
 
     companion object {
-        val FILE_QUOTATION = "quotations.json"
         val TAG = "SuggestionActivity"
     }
 
@@ -32,9 +44,13 @@ class SuggestionActivity : AppCompatActivity() {
         rvSuggestions.adapter = suggestionAdapter
         rvSuggestions.layoutManager = LinearLayoutManager(this )
 
+        tvQuote = findViewById(R.id.tvQuote)
+        tvQuoteAuthor = findViewById(R.id.tvQuoteAuthor)
+        requestQueue = Volley.newRequestQueue(this)
+
         fetchSuggestions()
 
-        //loadQuotationsFromJson(this, FILE_QUOTATION)
+        loadQuoteFromJson(this)
 
         findViewById<Button>(R.id.backBtn).setOnClickListener {
             finish()
@@ -43,17 +59,37 @@ class SuggestionActivity : AppCompatActivity() {
         findViewById<Button>(R.id.doneBtn).setOnClickListener {
             // TODO: send everything related to this post to parse
             // TODO: go to dashboard
-            val i: Intent = Intent(this, MainActivity::class.java)
+            val i = Intent(this, MainActivity::class.java)
             i.putExtra("signal", "from suggestion")
             startActivity(i)
             finish()
         }
     }
 
-//    private fun loadQuotationsFromJson(context: Context, fileName: String) {
-//        // return a list of quotations
-//        // Quotation class
-//    }
+    private fun loadQuoteFromJson(context: Context) {
+        quoteQueue = Volley.newRequestQueue(context)
+
+        val url = "https://jsonkeeper.com/b/UA8Q"
+
+        val request = JsonObjectRequest(Request.Method.GET, url, null, {
+                response -> try {
+                    val jsonArray = response.getJSONArray("quotes")
+                    val randomIndex = Random.nextInt(jsonArray.length())
+
+                    val randomQuote = jsonArray.getJSONObject(randomIndex)
+                    val quote = randomQuote.getString("quote")
+                    val author = randomQuote.getString("author")
+                    tvQuote.text = quote
+                    tvQuoteAuthor.text = author
+                }
+                catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+                }, { error -> error.printStackTrace() })
+
+        requestQueue?.add(request)
+
+    }
 
     private fun fetchSuggestions() {
         // Define the class we would like to query
