@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
-        android:text="How do you feel right now?"
+        android:text=""
         android:visibility="gone"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
@@ -34,14 +34,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/ivEmoji"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:paddingEnd="10dp">
+
             <TextView
+                android:id="@+id/tvEmotionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="How do you feel right now?"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:id="@+id/tvEmotionLabel"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:text="How are you right now?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <RatingBar
                 android:id="@+id/rbEmotionLevel"
@@ -70,7 +72,7 @@
         android:background="@drawable/journal_border"
         android:ems="10"
         android:gravity="top|start"
-        android:hint="What makes you feel that way?"
+        android:hint="What's going on?"
         android:inputType="textMultiLine"
         android:padding="10dp" />
 

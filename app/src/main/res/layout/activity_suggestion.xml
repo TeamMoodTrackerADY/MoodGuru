@@ -25,7 +25,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSuggestions"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="4"/>
 
         <View
             android:id="@+id/divider"
@@ -44,24 +45,33 @@
             android:textColor="@color/dark_green"
             android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/tvQuote"
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="8"
-            android:text="“To acquire knowledge, one must study; but to acquire wisdom, one must observe.”"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            />
-        <TextView
-            android:id="@+id/tvQuoteAuthor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Marilyn vos Savant"
-            android:textAlignment="textEnd"
-            android:textSize="17sp"
-            android:layout_gravity="end"/>
+            android:layout_weight="3">
+            <TextView
+                android:id="@+id/tvQuote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="8"
+                android:text="“To acquire knowledge, one must study; but to acquire wisdom, one must observe.”"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                />
+            <TextView
+                android:id="@+id/tvQuoteAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marilyn vos Savant"
+                android:textAlignment="textEnd"
+                android:textSize="17sp"
+                android:layout_below="@id/tvQuote"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
     </LinearLayout>
 
 
