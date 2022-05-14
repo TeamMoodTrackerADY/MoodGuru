@@ -7,10 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.setFragmentResultListener
 import com.bumptech.glide.Glide
 import com.example.moodguru.R
@@ -23,11 +20,16 @@ class ComposeFragment : Fragment() {
     lateinit var ivEmoji: ImageView
     lateinit var btnContinue: Button
     lateinit var tvEmotionLabel: TextView
+    lateinit var ratingBar: RatingBar
+
+    var adjToSend:String? = null
 
     companion object{
         val TAG = "ComposeFragment"
         val KEY_REQUEST_EMO = "select_an_emotion"
-        val HINT = "What makes you feel %s?"
+        val HINT = "What makes you %s?"
+        val KEY_ADJ_TO_SUGG = "send_adj_to_suggestion"
+        val KEY_RATING_TO_SUGG = "send_rating_to_suggestion"
     }
 
     override fun onCreateView(
@@ -46,6 +48,7 @@ class ComposeFragment : Fragment() {
             val emotion = bundle.getParcelable<Emotion>(EmotionFragment.KEY_SELECT_EMO)
             Log.d(TAG, "ready to display: " + emotion?.getAdjective())
             if (emotion != null) {
+                adjToSend = emotion.getAdjective()
                 setEmotionToDisplay(emotion)
                 etJournal.hint = String.format(HINT, emotion.getAdjective()?.lowercase())
             }
@@ -54,7 +57,9 @@ class ComposeFragment : Fragment() {
 
     private fun setEmotionToDisplay(emotion: Emotion) {
         tvEmotionLabel.text = emotion.getAdjective()
-        Glide.with(requireContext()).load(emotion.getEmoji()?.url).into(ivEmoji)
+        Glide.with(requireContext())
+            .load(emotion.getEmoji()?.url)
+            .into(ivEmoji)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,19 +68,30 @@ class ComposeFragment : Fragment() {
         ivEmoji = view.findViewById(R.id.ivEmoji)
         tvEmotionLabel = view.findViewById(R.id.tvEmotionLabel)
         btnContinue = view.findViewById(R.id.btnContinue)
+        ratingBar = view.findViewById(R.id.rbEmotionLevel)
 
         ivEmoji.setOnClickListener {
             EmotionFragment.showEmotionFragment(requireActivity().supportFragmentManager)
         }
 
+        // Send current adjective & rating to SuggestionActivity
         btnContinue.setOnClickListener {
             val i = Intent(requireContext(), SuggestionActivity::class.java)
-            startActivity(i)
+//            Log.d(TAG, "rating is: " + ratingBar.rating)
+
+            if (adjToSend == null){
+                Toast.makeText(requireContext(),
+                    "Select an emotion to continue", Toast.LENGTH_SHORT)
+                    .show()
+            } else{
+                i.putExtra(KEY_ADJ_TO_SUGG, adjToSend)
+                i.putExtra(KEY_RATING_TO_SUGG, ratingBar.rating)
+                startActivity(i)
+                // TODO: transaction
+            }
+
         }
 
-
-        // TODO: UI add title (optional), add colum in db
-        //
 
     }
 }

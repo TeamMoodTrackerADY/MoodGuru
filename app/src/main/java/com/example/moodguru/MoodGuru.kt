@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.moodguru.parseDataModel.Advice
 import com.example.moodguru.parseDataModel.Emotion
 import com.example.moodguru.parseDataModel.Post
+import com.example.moodguru.parseDataModel.Quote
 import com.parse.Parse
 import com.parse.ParseObject
 

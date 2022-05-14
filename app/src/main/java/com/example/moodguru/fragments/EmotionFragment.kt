@@ -40,7 +40,7 @@ class EmotionFragment : DialogFragment() {
         super.onCreate(savedInstanceState)
         emotionAdapter = EmotionAdapter(requireContext(), emotionList, object : EmotionAdapter.OnSelectHandler{
             override fun onSelect(emotion: Emotion) {
-                Toast.makeText(requireContext(), emotion.getAdjective() + " is selected", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), emotion.getAdjective() + " is selected", Toast.LENGTH_SHORT).show()
                 setFragmentResult(ComposeFragment.KEY_REQUEST_EMO, bundleOf(KEY_SELECT_EMO to emotion))
                 dismiss()
             }

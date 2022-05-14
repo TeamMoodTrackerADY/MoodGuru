@@ -13,8 +13,10 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.moodguru.fragments.ComposeFragment
 import com.example.moodguru.fragments.EmotionFragment
 import com.example.moodguru.parseDataModel.Advice
+import com.example.moodguru.parseDataModel.Emotion
 import com.parse.ParseQuery
 import org.json.JSONException
 import kotlin.random.Random
@@ -48,7 +50,11 @@ class SuggestionActivity : AppCompatActivity() {
         tvQuoteAuthor = findViewById(R.id.tvQuoteAuthor)
         requestQueue = Volley.newRequestQueue(this)
 
-        fetchSuggestions()
+        val adj = intent.getStringExtra(ComposeFragment.KEY_ADJ_TO_SUGG)
+        Log.d(TAG, "suggestion based on: $adj")
+        if (adj != null) {
+            fetchSuggestions(adj)
+        }
 
         loadQuoteFromJson(this)
 
@@ -91,10 +97,10 @@ class SuggestionActivity : AppCompatActivity() {
 
     }
 
-    private fun fetchSuggestions() {
+    private fun fetchSuggestions(adj: String) {
         // Define the class we would like to query
         val query: ParseQuery<Advice> = ParseQuery.getQuery(Advice::class.java)
-
+        query.whereEqualTo(Emotion.KEY_ADJ, adj)
         query.findInBackground { list, e ->
             if (e != null) {
                 Log.e(EmotionFragment.TAG, "fetchSuggestions failed", e)
