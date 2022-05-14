@@ -14,6 +14,9 @@ After a few days of inputting the users' mood, the app can display a chart of ho
 
 Additionally, there will also be a note-taking/ journaling feature where the users can write down what they have been doing, how they have been feeling and their reflection for the day.
 
+### Progress
+#### Milestone 1 (5/7/2022 - 5/14/2022)
+![MS1](https://media.giphy.com/media/Xi9TjrhRnRzpuqI1yn/giphy.gif)
 
 ### App Evaluation
 
@@ -31,17 +34,17 @@ Additionally, there will also be a note-taking/ journaling feature where the use
 **Required Must-have Stories**
 
 As a user, I want to keep track of my mental health using these features:
-- [ ] Select adjective(s) that represents their feelings for certain moments of their days.
-- [ ] Rate their emotions on a scale of 1-5
+- [x] Select adjective(s) that represents their feelings for certain moments of their days.
+- [x] Rate their emotions on a scale of 1-5
 - [ ] Look at a chart to visualize the changes of their emotion over time.
-- [ ] Write events, comments or self-motivation specific to that emotion. 
-- [ ] Receive suggestions on how to motivate themselves
+- [x] Write events, comments or self-motivation specific to that emotion. 
+- [x] Receive suggestions on how to motivate themselves
 
 
 
 **Optional Nice-to-have Stories**
 
-- [ ] Users can login with Google.
+- [x] Users can login.
 - [ ] Users can link Spotify to their app so that they can listen to music while reflecting their mood.
 - [ ] Users can make their journals and adjective public to the community. 
 - [ ] Users can send suggestions directly to other users.
