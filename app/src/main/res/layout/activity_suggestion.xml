@@ -26,7 +26,7 @@
             android:id="@+id/rvSuggestions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="4"/>
+            android:layout_weight="3"/>
 
         <View
             android:id="@+id/divider"
@@ -50,26 +50,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3">
+
             <TextView
                 android:id="@+id/tvQuote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:ellipsize="end"
                 android:maxLines="8"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="“To acquire knowledge, one must study; but to acquire wisdom, one must observe.”"
                 android:textSize="20sp"
-                android:textStyle="italic"
-                />
+                android:textStyle="italic" />
+
             <TextView
                 android:id="@+id/tvQuoteAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Marilyn vos Savant"
-                android:textAlignment="textEnd"
-                android:textSize="17sp"
                 android:layout_below="@id/tvQuote"
                 android:layout_alignParentEnd="true"
-                />
+                android:paddingRight="10dp"
+                android:text="Marilyn vos Savant"
+                android:textAlignment="textEnd"
+                android:textSize="17sp" />
         </RelativeLayout>
 
     </LinearLayout>

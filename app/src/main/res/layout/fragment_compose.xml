@@ -17,25 +17,25 @@
         android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
 
 
-
     <RelativeLayout
+        android:id="@+id/emojiSelector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvPrompt"
-        android:layout_marginTop="20dp"
-        android:id="@+id/emojiSelector">
+        android:layout_marginTop="20dp">
+
         <ImageView
             android:id="@+id/ivEmoji"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_emoji_placeholder" />
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/ivEmoji"
             android:layout_centerVertical="true"
-            android:paddingEnd="10dp">
+            android:layout_toEndOf="@id/ivEmoji">
 
             <TextView
                 android:id="@+id/tvEmotionLabel"
@@ -47,13 +47,13 @@
 
             <RatingBar
                 android:id="@+id/rbEmotionLevel"
-                android:isIndicator="false"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvEmotionLabel"
+                android:isIndicator="false"
                 android:numStars="5"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"
-                android:stepSize="0.5"/>
+                android:stepSize="0.5" />
         </RelativeLayout>
 
     </RelativeLayout>
