@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.moodguru">
+    package="com.example.moodguru"
+    android:targetSandboxVersion="1">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -26,6 +28,10 @@
             android:value="@string/back4app_client_key" />
 
         <activity
+            android:name=".SuggestionActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -36,12 +42,9 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="false">
         </activity>
-        <activity
-            android:name=".SuggestionActivity"
-            android:exported="true">
-        </activity>
+
     </application>
 
 </manifest>

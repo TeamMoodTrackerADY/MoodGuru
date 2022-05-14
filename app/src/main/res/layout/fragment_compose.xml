@@ -11,34 +11,68 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
-        android:text="How do you feel right now?"
+        android:text=""
+        android:visibility="gone"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
 
-    <ImageView
-        android:id="@+id/ivEmoji"
-        android:layout_marginVertical="50dp"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
+
+    <RelativeLayout
+        android:id="@+id/emojiSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tvPrompt"
-        android:padding="10dp"
-        android:src="@drawable/ic_emoji_placeholder" />
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/ivEmoji"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_emoji_placeholder" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ivEmoji">
+
+            <TextView
+                android:id="@+id/tvEmotionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="How are you right now?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            <RatingBar
+                android:id="@+id/rbEmotionLevel"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvEmotionLabel"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:stepSize="0.5" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 
     <EditText
         android:id="@+id/etJournalContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/btnContinue"
-        android:layout_below="@id/ivEmoji"
-        android:hint="What makes you feel [surprised]?"
+        android:layout_below="@id/emojiSelector"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/journal_border"
         android:ems="10"
         android:gravity="top|start"
+        android:hint="What's going on?"
         android:inputType="textMultiLine"
         android:padding="10dp" />
 

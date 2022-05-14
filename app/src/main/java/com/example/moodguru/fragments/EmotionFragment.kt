@@ -1,21 +1,22 @@
 package com.example.moodguru.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moodguru.EmotionAdapter
 import com.example.moodguru.R
 import com.example.moodguru.parseDataModel.Emotion
 import com.parse.ParseQuery
-import com.parse.ParseUser
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,7 +38,14 @@ class EmotionFragment : DialogFragment() {
     // Use onCreate for any standard setup that does not require the activity to be fully created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        emotionAdapter = EmotionAdapter(requireContext(), emotionList)
+        emotionAdapter = EmotionAdapter(requireContext(), emotionList, object : EmotionAdapter.OnSelectHandler{
+            override fun onSelect(emotion: Emotion) {
+//                Toast.makeText(requireContext(), emotion.getAdjective() + " is selected", Toast.LENGTH_SHORT).show()
+                setFragmentResult(ComposeFragment.KEY_REQUEST_EMO, bundleOf(KEY_SELECT_EMO to emotion))
+                dismiss()
+            }
+
+        })
         populateEmotionList()
     }
 
@@ -58,6 +66,7 @@ class EmotionFragment : DialogFragment() {
             }
         }
     }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -83,6 +92,7 @@ class EmotionFragment : DialogFragment() {
             }
         }
 
+        // TODO: emotion dialog not show itself, violate SRP
         fun showEmotionFragment(fragmentManager: FragmentManager) {
             val emotionFragment = newInstance()
             emotionFragment.show(fragmentManager, TAG)

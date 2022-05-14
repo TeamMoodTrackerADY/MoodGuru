@@ -6,7 +6,7 @@ import com.parse.ParseObject
 @ParseClassName("Quote")
 class Quote: ParseObject() {
     companion object{
-        val KEY_CONTENT = "content"
+        val KEY_CONTENT = "quote"
         val KEY_AUTHOR = "author"
     }
 
