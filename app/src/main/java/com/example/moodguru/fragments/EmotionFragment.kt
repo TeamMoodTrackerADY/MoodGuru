@@ -55,7 +55,7 @@ class EmotionFragment : DialogFragment() {
         // TODO: Define our query conditions
         query.findInBackground{list, e ->
             if (e != null){
-                Log.e(TAG, "populateEmotionLis failed", e)
+                Log.e(TAG, "populateEmotionList failed", e)
                 e.printStackTrace()
             } else{
                 if (list != null){

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d(TAG, "onCreate: MainACtivity created")
+        Log.d(TAG, "onCreate: MainActivity created")
 
         val firstObject = ParseObject("FirstClass")
         firstObject.put("message","Hey ! First message from android. Parse is now connected")
@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
-
 
 
         // Bottom Navigator on item click listener (dashboard/compose/chart)
