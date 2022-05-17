@@ -93,7 +93,7 @@
       ]
     },
     {
-      "quote": "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate; only love can do that.",
+      "quote": "Hate cannot drive out hate; only love can do that.",
       "author": "Martin Luther King",
       "profession": "American minister",
       "topics": [
@@ -885,26 +885,6 @@
       ]
     },
     {
-      "quote": "We often discover what will do, by finding out what will not do; and probably he who never made a mistake never made a discovery.",
-      "author": "Samuel Smiles",
-      "profession": "Scottish Author",
-      "topics": [
-        "Inspirational",
-        "Wisdom",
-        "Failure"
-      ]
-    },
-    {
-      "quote": "Lost wealth may be replaced by industry, lost knowledge by study, lost health by temperance or medicine, but lost time is gone forever.",
-      "author": "Samuel Smiles",
-      "profession": "Scottish Author",
-      "topics": [
-        "Inspirational",
-        "Wisdom",
-        "Time"
-      ]
-    },
-    {
       "quote": "Life will always be to a large extent what we ourselves make it.",
       "author": "Samuel Smiles",
       "profession": "Scottish Author",
@@ -944,14 +924,6 @@
       "quote": "There is nothing either good or bad, but thinking makes it so.",
       "author": "William Shakespeare",
       "profession": "English poet",
-      "topics": [
-        "Philosophy"
-      ]
-    },
-    {
-      "quote": "You're not to be so blind with patriotism that you can't face reality. Wrong is wrong, no matter who does it or says it.",
-      "author": "Malcolm X",
-      "profession": "American minister",
       "topics": [
         "Philosophy"
       ]
@@ -1164,47 +1136,6 @@
       "topics": [
         "People",
         "Inspirational"
-      ]
-    },
-    {
-      "quote": "I used to think I was indecisive, but now I am not quite sure.",
-      "author": "Tommy Cooper",
-      "profession": "British Comedian",
-      "topics": [
-        "Humor"
-      ]
-    },
-    {
-      "quote": "Police arrested two kids yesterday, one was drinking battery acid, the other was eating fireworks. They charged one and let the other one off.",
-      "author": "Tommy Cooper",
-      "profession": "British Comedian",
-      "topics": [
-        "Humor"
-      ]
-    },
-    {
-      "quote": "You know, somebody actually complimented me on my driving today. They left a little note on the windscreen, it said 'Parking Fine.'",
-      "author": "Tommy Cooper",
-      "profession": "British Comedian",
-      "topics": [
-        "Humor"
-      ]
-    },
-    {
-      "quote": "A lie gets halfway around the world before the truth has a chance to get its pants on.",
-      "author": "Winston Churchill",
-      "profession": "Former British Prime Minister",
-      "topics": [
-        "Humor",
-        "Life"
-      ]
-    },
-    {
-      "quote": "Knowledge is like underwear. It is useful to have it, but not necessary to show it off.",
-      "author": "Bill Murray",
-      "profession": "American actor",
-      "topics": [
-        "Humor"
       ]
     },
     {
@@ -1572,10 +1503,6 @@
       "author": "Wayne Gretzky"
     },
     {
-      "quote": "I’ve missed more than 9000 shots in my career. I’ve lost almost 300 games. 26 times I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life. And that is why I succeed.",
-      "author": "Michael Jordan"
-    },
-    {
       "quote": "The most difficult thing is the decision to act, the rest is merely tenacity.",
       "author": "Amelia Earhart"
     },
@@ -1600,7 +1527,7 @@
       "author": "Earl Nightingale"
     },
     {
-      "quote": "Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do, so throw off the bowlines, sail away from safe harbor, catch the trade winds in your sails.  Explore, Dream, Discover.",
+      "quote": "Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do so Explore, Dream, Discover.",
       "author": "Mark Twain"
     },
     {
@@ -1648,7 +1575,7 @@
       "author": "Christopher Columbus"
     },
     {
-      "quote": "I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.",
+      "quote": "I’ve learned that people will forget what you said and what you did, but people will never forget how you made them feel.",
       "author": "Maya Angelou"
     },
     {
@@ -1700,10 +1627,6 @@
       "author": "Henry David Thoreau"
     },
     {
-      "quote": "When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.",
-      "author": "Erma Bombeck"
-    },
-    {
       "quote": "Few things can help an individual more than to place responsibility on him, and to let him know that you trust him.",
       "author": "Booker T. Washington"
     },
@@ -1730,10 +1653,6 @@
     {
       "quote": "Start where you are. Use what you have.  Do what you can.",
       "author": "Arthur Ashe"
-    },
-    {
-      "quote": "When I was 5 years old, my mother always told me that happiness was the key to life.  When I went to school, they asked me what I wanted to be when I grew up.  I wrote down ‘happy’.  They told me I didn’t understand the assignment, and I told them they didn’t understand life.",
-      "author": "John Lennon"
     },
     {
       "quote": "Fall seven times and stand up eight.",
@@ -1766,10 +1685,6 @@
     {
       "quote": "If you’re offered a seat on a rocket ship, don’t ask what seat! Just get on.",
       "author": "Sheryl Sandberg"
-    },
-    {
-      "quote": "First, have a definite, clear practical ideal; a goal, an objective. Second, have the necessary means to achieve your ends; wisdom, money, materials, and methods. Third, adjust all your means to that end.",
-      "author": "Aristotle"
     },
     {
       "quote": "If the wind will not serve, take to the oars.",
