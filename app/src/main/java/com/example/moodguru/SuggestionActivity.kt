@@ -32,6 +32,8 @@ class SuggestionActivity : AppCompatActivity() {
     private var requestQueue: RequestQueue? = null
 
     val suggestionList: MutableList<Advice> = mutableListOf()
+    lateinit var adviceArray: Array<String>
+    lateinit var quote: String
 
     companion object {
         val TAG = "SuggestionActivity"
@@ -63,7 +65,7 @@ class SuggestionActivity : AppCompatActivity() {
         }
 
         // Load and display 1 "Quote of the day"
-        loadQuoteFromJson(this)
+        quote = loadQuoteFromJson(this)
 
         // Go back to the Compose screen
         findViewById<Button>(R.id.backBtn).setOnClickListener {
@@ -78,8 +80,8 @@ class SuggestionActivity : AppCompatActivity() {
             val emotion = intent.extras?.getParcelable<Emotion>(ComposeFragment.KEY_EMOTION_TO_SUGG)
 
             // Send everything related to this post to parse
-            if (journal != null && adj != null && emotion != null) {
-                submitPost(journal, adj, rating, emotion)
+            if (journal != null && adj != null && emotion != null && quote != null) {
+                submitPost(journal, adj, rating, emotion, quote)
             }
 
             // Go to dashboard
@@ -90,13 +92,16 @@ class SuggestionActivity : AppCompatActivity() {
         }
     }
 
-    fun submitPost(journal: String, adjective: String, rating: Int, emotion: Emotion) {
+    fun submitPost(journal: String, adjective: String, rating: Int,
+                   emotion: Emotion, quote: String) {
         // Create the Post object
         val post = Post()
         post.putJournal(journal)
         post.putAdjective(adjective)
         post.putRating(rating)
         post.putEmotion(emotion)
+        //post.putSuggestion(adviceArray)
+        post.putQuote(quote)
 
         post.saveInBackground{exception ->
             if(exception != null) {
@@ -111,10 +116,12 @@ class SuggestionActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadQuoteFromJson(context: Context) {
+    private fun loadQuoteFromJson(context: Context): String {
         quoteQueue = Volley.newRequestQueue(context)
 
         val url = "https://jsonkeeper.com/b/R2BK"
+
+        var quote = ""
 
         val request = JsonObjectRequest(Request.Method.GET, url, null, {
                 response -> try {
@@ -122,7 +129,7 @@ class SuggestionActivity : AppCompatActivity() {
                     val randomIndex = (0..jsonArray.length()).shuffled().first()
 
                     var randomQuote = jsonArray.getJSONObject(randomIndex)
-                    var quote = randomQuote.getString("quote")
+                    quote = randomQuote.getString("quote")
                     var author = randomQuote.getString("author")
                     tvQuote.text = quote
                     tvQuoteAuthor.text = author
@@ -134,6 +141,7 @@ class SuggestionActivity : AppCompatActivity() {
 
         requestQueue?.add(request)
 
+        return tvQuote.text.toString()
     }
 
     private fun fetchSuggestions(adj: String) {

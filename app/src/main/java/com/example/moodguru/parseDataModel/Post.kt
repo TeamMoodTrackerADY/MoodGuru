@@ -17,6 +17,8 @@ class Post: ParseObject() {
         val KEY_SUGGESTION = "suggestion"
         val KEY_DATE = "createdAt"
         val KEY_EMOTION = "emotion"
+
+        val KEY_QUOTE = "quote"
     }
 
     fun getAdjective() = getString(KEY_ADJ)
@@ -32,7 +34,7 @@ class Post: ParseObject() {
     fun putAuthor(author: ParseUser) = put(KEY_AUTHOR, author)
 
     fun getSuggestion() = getParseObject(KEY_SUGGESTION)
-//    fun putSuggestion() = put(KEY_SUGGESTION, )
+    fun putSuggestion(advice: Array<String>) = put(KEY_SUGGESTION, advice)
 
     fun getCreatedDate(): String {
         val originalDate = this.getCreatedAt().toString() //Sat May 14 19:26:07 PDT 2022
@@ -53,4 +55,6 @@ class Post: ParseObject() {
 
     fun putEmotion(emotion: Emotion) = put(KEY_EMOTION, emotion)
 
+    fun getQuote() = getString(KEY_QUOTE)
+    fun putQuote(quote: String) = put(KEY_QUOTE, quote)
 }
