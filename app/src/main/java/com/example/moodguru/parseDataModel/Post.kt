@@ -52,5 +52,7 @@ class Post: ParseObject() {
         val emotion = getParseObject(KEY_EMOTION) as Emotion
         return emotion
     }
+
     fun putEmotion(emotion: Emotion) = put(KEY_EMOTION, emotion)
+
 }

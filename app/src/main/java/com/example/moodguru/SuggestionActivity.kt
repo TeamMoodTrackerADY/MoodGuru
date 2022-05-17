@@ -4,8 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +16,12 @@ import com.example.moodguru.fragments.ComposeFragment
 import com.example.moodguru.fragments.EmotionFragment
 import com.example.moodguru.parseDataModel.Advice
 import com.example.moodguru.parseDataModel.Emotion
+import com.example.moodguru.parseDataModel.Post
+import com.parse.ParseFile
 import com.parse.ParseQuery
+import com.parse.ParseUser
 import org.json.JSONException
+import java.io.File
 import kotlin.random.Random
 
 class SuggestionActivity : AppCompatActivity() {
@@ -50,25 +53,64 @@ class SuggestionActivity : AppCompatActivity() {
         tvQuoteAuthor = findViewById(R.id.tvQuoteAuthor)
         requestQueue = Volley.newRequestQueue(this)
 
+        // Get the selected adjective from the Compose fragment
         val adj = intent.getStringExtra(ComposeFragment.KEY_ADJ_TO_SUGG)
         Log.d(TAG, "suggestion based on: $adj")
+
+        // Get the user's input journal from the Compose fragment
+        val journal = intent.getStringExtra(ComposeFragment.KEY_JOURNAL_TO_SUGG)
+        Log.d(TAG, "journal: $journal")
+
         if (adj != null) {
             fetchSuggestions(adj)
         }
 
+        // Load and display 1 "Quote of the day"
         loadQuoteFromJson(this)
 
+        // Go back to the Compose screen
         findViewById<Button>(R.id.backBtn).setOnClickListener {
             finish()
         }
 
+        // After we click "Done", all users' inputs should be posted to Parse
         findViewById<Button>(R.id.doneBtn).setOnClickListener {
-            // TODO: send everything related to this post to parse
-            // TODO: go to dashboard
+            // TODO: Delete dummy variable for rating later
+            val rating = 3
+
+            val emotion = intent.extras?.getParcelable<Emotion>(ComposeFragment.KEY_EMOTION_TO_SUGG)
+
+            // Send everything related to this post to parse
+            if (journal != null && adj != null && emotion != null) {
+                submitPost(journal, adj, rating, emotion)
+            }
+
+            // Go to dashboard
             val i = Intent(this, MainActivity::class.java)
             i.putExtra("signal", "from suggestion")
             startActivity(i)
             finish()
+        }
+    }
+
+    fun submitPost(journal: String, adjective: String, rating: Int, emotion: Emotion) {
+        // Create the Post object
+        val post = Post()
+        post.putJournal(journal)
+        post.putAdjective(adjective)
+        post.putRating(rating)
+        post.putEmotion(emotion)
+
+        post.saveInBackground{exception ->
+            if(exception != null) {
+                // Something went wrong
+                Log.e(TAG, "Error while saving post!")
+                exception.printStackTrace()
+                Toast.makeText(this, "Error while saving post!", Toast.LENGTH_SHORT).show()
+            } else {
+                Log.i(TAG, "Successfully saved post!")
+                Toast.makeText(this, "Posted!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

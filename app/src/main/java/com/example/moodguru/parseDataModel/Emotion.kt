@@ -2,6 +2,7 @@ package com.example.moodguru.parseDataModel
 
 import android.util.Log
 import com.parse.*
+import java.io.Serializable
 
 @ParseClassName("Emotion")
 class Emotion : ParseObject() {

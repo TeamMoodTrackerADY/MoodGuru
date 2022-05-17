@@ -13,6 +13,9 @@ import com.bumptech.glide.Glide
 import com.example.moodguru.R
 import com.example.moodguru.SuggestionActivity
 import com.example.moodguru.parseDataModel.Emotion
+import com.parse.ParseFile
+import com.parse.ParseObject
+import java.io.File
 
 class ComposeFragment : Fragment() {
 
@@ -23,6 +26,7 @@ class ComposeFragment : Fragment() {
     lateinit var ratingBar: RatingBar
 
     var adjToSend:String? = null
+    lateinit var emotionToSend: Emotion
 
     companion object{
         val TAG = "ComposeFragment"
@@ -30,6 +34,8 @@ class ComposeFragment : Fragment() {
         val HINT = "What makes you %s?"
         val KEY_ADJ_TO_SUGG = "send_adj_to_suggestion"
         val KEY_RATING_TO_SUGG = "send_rating_to_suggestion"
+        val KEY_JOURNAL_TO_SUGG = "send_journal_to_suggestion"
+        val KEY_EMOTION_TO_SUGG = "send_emotion_to_suggestion"
     }
 
     override fun onCreateView(
@@ -49,6 +55,7 @@ class ComposeFragment : Fragment() {
             Log.d(TAG, "ready to display: " + emotion?.getAdjective())
             if (emotion != null) {
                 adjToSend = emotion.getAdjective()
+                emotionToSend = emotion
                 setEmotionToDisplay(emotion)
                 etJournal.hint = String.format(HINT, emotion.getAdjective()?.lowercase())
             }
@@ -85,6 +92,12 @@ class ComposeFragment : Fragment() {
                     .show()
             } else{
                 i.putExtra(KEY_ADJ_TO_SUGG, adjToSend)
+
+                val journalToSend = etJournal.text.toString()
+                i.putExtra(KEY_JOURNAL_TO_SUGG, journalToSend)
+
+                i.putExtra(KEY_EMOTION_TO_SUGG, emotionToSend)
+
                 i.putExtra(KEY_RATING_TO_SUGG, ratingBar.rating)
                 startActivity(i)
                 // TODO: transaction
