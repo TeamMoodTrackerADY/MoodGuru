@@ -75,7 +75,7 @@ class SuggestionActivity : AppCompatActivity() {
     private fun loadQuoteFromJson(context: Context) {
         quoteQueue = Volley.newRequestQueue(context)
 
-        val url = "https://jsonkeeper.com/b/UA8Q"
+        val url = "https://jsonkeeper.com/b/R2BK"
 
         val request = JsonObjectRequest(Request.Method.GET, url, null, {
                 response -> try {
@@ -108,7 +108,7 @@ class SuggestionActivity : AppCompatActivity() {
             } else {
                 if (list != null) {
                     suggestionList.clear()
-                    for (i in 1..3) {
+                    while(suggestionList.size < 3) {
                         val randomIndex = Random.nextInt(list.size)
                         val randomAdvice = list[randomIndex]
                         if(!suggestionList.contains(randomAdvice)) {
