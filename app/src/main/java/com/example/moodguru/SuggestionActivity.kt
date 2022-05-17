@@ -17,11 +17,8 @@ import com.example.moodguru.fragments.EmotionFragment
 import com.example.moodguru.parseDataModel.Advice
 import com.example.moodguru.parseDataModel.Emotion
 import com.example.moodguru.parseDataModel.Post
-import com.parse.ParseFile
 import com.parse.ParseQuery
-import com.parse.ParseUser
 import org.json.JSONException
-import java.io.File
 import kotlin.random.Random
 
 class SuggestionActivity : AppCompatActivity() {

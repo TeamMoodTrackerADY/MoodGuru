@@ -13,9 +13,6 @@ import com.bumptech.glide.Glide
 import com.example.moodguru.R
 import com.example.moodguru.SuggestionActivity
 import com.example.moodguru.parseDataModel.Emotion
-import com.parse.ParseFile
-import com.parse.ParseObject
-import java.io.File
 
 class ComposeFragment : Fragment() {
 
