@@ -51,8 +51,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvEmotionLabel"
-                android:isIndicator="false"
                 android:numStars="5"
+                android:progressBackgroundTint="@color/logo_yellow"
+                android:secondaryProgressTint="@color/black"
                 android:stepSize="0.5" />
         </RelativeLayout>
 
