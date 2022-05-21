@@ -8,6 +8,8 @@ import java.util.*
 @ParseClassName("Post")
 class Post: ParseObject() {
     companion object{
+        val KEY_USER = "user"
+
         val KEY_ADJ = "adjective"
         val KEY_RATING = "rating"
 
@@ -22,6 +24,9 @@ class Post: ParseObject() {
 
         val KEY_DASHBOARD = "includeInDashboard"
     }
+
+    fun getUser() = getParseUser(KEY_USER)
+    fun putUser(user: ParseUser) = put(KEY_USER, user)
 
     fun getAdjective() = getString(KEY_ADJ)
     fun putAdjective(adj: String) = put(KEY_ADJ, adj)

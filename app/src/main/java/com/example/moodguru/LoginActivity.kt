@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         // bottom navigator test
-        goToMainActivity()
+//        goToMainActivity()
         // Check if user is logged in. If yes, take them to main activity
         if (ParseUser.getCurrentUser() != null) {
             goToMainActivity()

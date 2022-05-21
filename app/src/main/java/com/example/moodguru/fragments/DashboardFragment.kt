@@ -16,6 +16,7 @@ import com.example.moodguru.parseDataModel.Post
 import com.parse.FindCallback
 import com.parse.ParseQuery
 import com.parse.ParseException
+import com.parse.ParseUser
 
 class DashboardFragment : Fragment() {
     lateinit var postsRecyclerView: RecyclerView
@@ -56,10 +57,12 @@ class DashboardFragment : Fragment() {
         // Specify which class to query
         val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
         // Find all Post objects
-        query.include(Post.KEY_AUTHOR)
-        query.include(Post.KEY_EMOTION)
+        query.include(Post.KEY_USER)
+            .include(Post.KEY_AUTHOR)
+            .include(Post.KEY_EMOTION)
         // Return posts in descending order (newer posts appear first)
-        query.addDescendingOrder("createdAt")
+        query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser())
+            .addDescendingOrder("createdAt")
 
         query.findInBackground(object : FindCallback<Post> {
             override fun done(posts: MutableList<Post>?, e: ParseException?){
