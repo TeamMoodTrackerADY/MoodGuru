@@ -1,6 +1,7 @@
 package com.example.moodguru
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,28 +15,32 @@ import com.example.moodguru.parseDataModel.Emotion
 import com.example.moodguru.parseDataModel.Post
 import com.parse.ParseQuery
 
-
+const val POST_EXTRA = "POST_EXTRA"
 class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Adapter<PostAdapter.ViewHolder>(){
-    val emotionList: MutableList<Emotion> = mutableListOf()
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val tvDate: TextView
-        val tvContent : TextView
-        val ivEmoji: ImageView
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
+        val tvDate = itemView.findViewById<TextView>(R.id.tvDashboardDate)
+        val tvContent = itemView.findViewById<TextView>(R.id.tvDashboardContent)
+        val ivEmoji = itemView.findViewById<ImageView>(R.id.ivDashboardEmoji)
 
         init {
-            tvDate = itemView.findViewById(R.id.tvDashboardDate)
-            tvContent = itemView.findViewById(R.id.tvDashboardContent)
-            ivEmoji = itemView.findViewById(R.id.ivDashboardEmoji)
+            itemView.setOnClickListener(this)
         }
 
         fun bind(post: Post){
-            tvDate.text = post.getCreatedDate().toString()
+            tvDate.text = post.getCreatedDate()
             tvContent.text = post.getJournal()
             Glide.with(itemView.context)
                 .load(post.getEmotion().getEmoji()?.url)
                 .override(80, 80)
                 .into(ivEmoji)
+        }
+
+        override fun onClick(v: View?){
+            val post = posts[adapterPosition]
+            val intent = Intent(context, DetailPostActivity::class.java)
+            intent.putExtra(POST_EXTRA, post)
+            context.startActivity(intent)
         }
     }
 

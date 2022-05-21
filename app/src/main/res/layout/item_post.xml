@@ -14,8 +14,8 @@
         style="@style/Base.TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
@@ -24,13 +24,13 @@
         android:layout_marginBottom="5dp"
         android:layout_toLeftOf="@+id/ivDashboardEmoji"
         android:singleLine="true"
-        android:text="Saturday (5/14/2022)"
-        android:textStyle="bold" />
+        android:text="5/14/2022 (Sat)" />
 
     <ImageView
         android:id="@+id/ivDashboardEmoji"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
