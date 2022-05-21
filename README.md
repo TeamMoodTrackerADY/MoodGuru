@@ -15,6 +15,11 @@ After a few days of inputting the users' mood, the app can display a chart of ho
 Additionally, there will also be a note-taking/ journaling feature where the users can write down what they have been doing, how they have been feeling and their reflection for the day.
 
 ### Progress
+#### Milestone 2 (5/15/2022 - 5/21/2022)
+![MS2-1](https://media.giphy.com/media/GO7QE8FCtTTGqkW88C/giphy.gif)
+![MS2-2](https://media.giphy.com/media/vmznPTYn6inuaMpcH1/giphy.gif)
+
+
 #### Milestone 1 (5/7/2022 - 5/14/2022)
 ![MS1](https://media.giphy.com/media/Xi9TjrhRnRzpuqI1yn/giphy.gif)
 
