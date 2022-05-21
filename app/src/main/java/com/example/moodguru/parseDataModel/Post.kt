@@ -26,8 +26,8 @@ class Post: ParseObject() {
     fun getAdjective() = getString(KEY_ADJ)
     fun putAdjective(adj: String) = put(KEY_ADJ, adj)
 
-    fun getRating() = getInt(KEY_RATING)
-    fun putRating(rating: Int) = put(KEY_RATING, rating)
+    fun getRating() = getNumber(KEY_RATING)?.toFloat()
+    fun putRating(rating: Float) = put(KEY_RATING, rating)
 
     fun getJournal() = getString(KEY_JOURNAL)
     fun putJournal(journal: String) = put(KEY_JOURNAL, journal)

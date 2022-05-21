@@ -34,6 +34,7 @@ class ComposeFragment : Fragment() {
     lateinit var ratingBar: RatingBar
 
     var adjToSend:String? = null
+    var ratingToSend:Float = 0F
     lateinit var emotionToSend: Emotion
 
     companion object{
@@ -115,7 +116,11 @@ class ComposeFragment : Fragment() {
                 Toast.makeText(requireContext(),
                     "Select an emotion to continue", Toast.LENGTH_SHORT)
                     .show()
-            } else{
+            } else if (etJournal.text.isNullOrEmpty()){
+                Toast.makeText(requireContext(),
+                    "What makes you feel this way?", Toast.LENGTH_SHORT)
+                    .show()
+            }else{
                 i.putExtra(KEY_ADJ_TO_SUGG, adjToSend)
 
                 val journalToSend = etJournal.text.toString()
@@ -123,7 +128,7 @@ class ComposeFragment : Fragment() {
 
                 i.putExtra(KEY_EMOTION_TO_SUGG, emotionToSend)
 
-                i.putExtra(KEY_RATING_TO_SUGG, ratingBar.rating)
+                i.putExtra(KEY_RATING_TO_SUGG, ratingToSend)
                 startActivity(i)
                 // TODO: transaction
             }
@@ -134,6 +139,7 @@ class ComposeFragment : Fragment() {
     }
 
     private fun updateRatingBar(rating: Float) {
+        this.ratingToSend = rating
         ratingBar.rating = Math.abs(rating * 5.0).toFloat()
         if (rating > 0.5)
             DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.orange_pos))

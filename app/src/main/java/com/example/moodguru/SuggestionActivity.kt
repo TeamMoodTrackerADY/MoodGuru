@@ -60,7 +60,7 @@ class SuggestionActivity : AppCompatActivity() {
         val journal = intent.getStringExtra(ComposeFragment.KEY_JOURNAL_TO_SUGG)
 
         // TODO: Delete dummy variable for rating later
-        val rating = 3
+        val rating = intent.getFloatExtra(ComposeFragment.KEY_RATING_TO_SUGG, 0F)
 
         // Get the whole "emotion" class based on the user's selection
         val emotion = intent.extras?.getParcelable<Emotion>(ComposeFragment.KEY_EMOTION_TO_SUGG)
@@ -106,7 +106,7 @@ class SuggestionActivity : AppCompatActivity() {
                             post.putRating(rating)
                             post.putEmotion(emotion)
                             post.putSuggestion(advice)
-                            post.putQuote(quote)
+//                            post.putQuote(quote)
 
                             // Load and display 1 "Quote of the day"
                             quoteQueue = Volley.newRequestQueue(this)
