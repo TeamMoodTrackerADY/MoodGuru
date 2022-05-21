@@ -19,18 +19,16 @@ const val POST_EXTRA = "POST_EXTRA"
 class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Adapter<PostAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
-        val tvDate: TextView
-        val tvContent : TextView
-        val ivEmoji: ImageView
+        val tvDate = itemView.findViewById<TextView>(R.id.tvDashboardDate)
+        val tvContent = itemView.findViewById<TextView>(R.id.tvDashboardContent)
+        val ivEmoji = itemView.findViewById<ImageView>(R.id.ivDashboardEmoji)
 
         init {
-            tvDate = itemView.findViewById(R.id.tvDashboardDate)
-            tvContent = itemView.findViewById(R.id.tvDashboardContent)
-            ivEmoji = itemView.findViewById(R.id.ivDashboardEmoji)
+            itemView.setOnClickListener(this)
         }
 
         fun bind(post: Post){
-            tvDate.text = post.getCreatedDate().toString()
+            tvDate.text = post.getCreatedDate()
             tvContent.text = post.getJournal()
             Glide.with(itemView.context)
                 .load(post.getEmotion().getEmoji()?.url)

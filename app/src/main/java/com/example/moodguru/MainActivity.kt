@@ -70,14 +70,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         // default
-        btmNavi.selectedItemId = R.id.action_compose
+        btmNavi.selectedItemId = R.id.action_dashboard
 
         // if get signal from suggestion activity, land on dashboard
         if (intent.getStringExtra("signal").equals("from suggestion")){
             btmNavi.selectedItemId = R.id.action_dashboard
         }
-
-
-
     }
 }
