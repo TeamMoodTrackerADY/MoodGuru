@@ -1,18 +1,29 @@
 package com.example.moodguru.fragments
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.graphics.drawable.DrawableCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.setFragmentResultListener
 import com.bumptech.glide.Glide
+import com.example.moodguru.EmotionAnalyzer
+//import com.example.moodguru.EmotionAnalyzer
+//import com.example.moodguru.EmotionAnalyzer
 import com.example.moodguru.R
 import com.example.moodguru.SuggestionActivity
 import com.example.moodguru.parseDataModel.Emotion
+//import com.vader.sentiment.analyzer.SentimentAnalyzer
+
+//import com.vader.sentiment.analyzer.SentimentAnalyzer
 
 class ComposeFragment : Fragment() {
 
@@ -23,6 +34,7 @@ class ComposeFragment : Fragment() {
     lateinit var ratingBar: RatingBar
 
     var adjToSend:String? = null
+    var ratingToSend:Float = 0F
     lateinit var emotionToSend: Emotion
 
     companion object{
@@ -74,6 +86,23 @@ class ComposeFragment : Fragment() {
         btnContinue = view.findViewById(R.id.btnContinue)
         ratingBar = view.findViewById(R.id.rbEmotionLevel)
 
+
+//        EmotionAnalyzer.create().analyze("This is a freaking mad day. God I love it!")
+
+       etJournal.addTextChangedListener(object: TextWatcher{
+           override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+           override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+               if (!s.isNullOrEmpty()){
+                   val f = EmotionAnalyzer.analyze(s.toString(), requireContext())
+                   updateRatingBar(f)
+               }
+           }
+
+           override fun afterTextChanged(s: Editable?) {}
+
+       })
+        
         ivEmoji.setOnClickListener {
             EmotionFragment.showEmotionFragment(requireActivity().supportFragmentManager)
         }
@@ -87,7 +116,11 @@ class ComposeFragment : Fragment() {
                 Toast.makeText(requireContext(),
                     "Select an emotion to continue", Toast.LENGTH_SHORT)
                     .show()
-            } else{
+            } else if (etJournal.text.isNullOrEmpty()){
+                Toast.makeText(requireContext(),
+                    "What makes you feel this way?", Toast.LENGTH_SHORT)
+                    .show()
+            }else{
                 i.putExtra(KEY_ADJ_TO_SUGG, adjToSend)
 
                 val journalToSend = etJournal.text.toString()
@@ -95,7 +128,7 @@ class ComposeFragment : Fragment() {
 
                 i.putExtra(KEY_EMOTION_TO_SUGG, emotionToSend)
 
-                i.putExtra(KEY_RATING_TO_SUGG, ratingBar.rating)
+                i.putExtra(KEY_RATING_TO_SUGG, ratingToSend)
                 startActivity(i)
                 // TODO: transaction
             }
@@ -103,5 +136,17 @@ class ComposeFragment : Fragment() {
         }
 
 
+    }
+
+    private fun updateRatingBar(rating: Float) {
+        this.ratingToSend = rating
+        ratingBar.rating = Math.abs(rating * 5.0).toFloat()
+        if (rating > 0.5)
+            DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.orange_pos))
+        else if (rating < -0.5)
+            DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.blue_neg))
+        else
+            DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.logo_yellow))
+        Log.d(TAG, "emo = $rating")
     }
 }

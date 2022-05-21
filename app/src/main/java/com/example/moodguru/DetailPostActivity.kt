@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -48,10 +49,24 @@ class DetailPostActivity : AppCompatActivity() {
         tvQuote.text = post.getQuote()
         tvQuoteAuthor.text = post.getAuthor()
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val btnBack = findViewById<Button>(R.id.detailBackBtn)
         btnBack.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+                return true
+            }
+        }
+        return super.onContextItemSelected(item)
     }
 }

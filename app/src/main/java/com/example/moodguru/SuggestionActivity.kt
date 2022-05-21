@@ -17,6 +17,7 @@ import com.example.moodguru.parseDataModel.Advice
 import com.example.moodguru.parseDataModel.Emotion
 import com.example.moodguru.parseDataModel.Post
 import com.parse.ParseQuery
+import com.parse.ParseUser
 import org.json.JSONException
 import kotlin.random.Random
 
@@ -60,7 +61,7 @@ class SuggestionActivity : AppCompatActivity() {
         val journal = intent.getStringExtra(ComposeFragment.KEY_JOURNAL_TO_SUGG)
 
         // TODO: Delete dummy variable for rating later
-        val rating = 3
+        val rating = intent.getFloatExtra(ComposeFragment.KEY_RATING_TO_SUGG, 0F)
 
         // Get the whole "emotion" class based on the user's selection
         val emotion = intent.extras?.getParcelable<Emotion>(ComposeFragment.KEY_EMOTION_TO_SUGG)
@@ -101,41 +102,14 @@ class SuggestionActivity : AppCompatActivity() {
 
                         // Submit everything to post before the user clicks "Done"
                         if (journal != null && emotion != null) {
+                            post.putUser(ParseUser.getCurrentUser())
                             post.putJournal(journal)
                             post.putAdjective(adj)
                             post.putRating(rating)
                             post.putEmotion(emotion)
                             post.putSuggestion(advice)
-                            post.putQuote(quote)
+                            fetchRandomQuote(post)
 
-                            // Load and display 1 "Quote of the day"
-                            quoteQueue = Volley.newRequestQueue(this)
-
-                            // The URL that stores our JSON database
-                            val url = "https://jsonkeeper.com/b/R2BK"
-
-                            // Make a request to fetch a random quote
-                            val request = JsonObjectRequest(Request.Method.GET, url, null, {
-                                    response -> try {
-                                val jsonArray = response.getJSONArray("quotes")
-                                val randomIndex = (0..jsonArray.length()).shuffled().first()
-
-                                val randomQuote = jsonArray.getJSONObject(randomIndex)
-                                quote = randomQuote.getString("quote")
-                                val author = randomQuote.getString("author")
-                                tvQuote.text = quote
-                                tvQuoteAuthor.text = author
-
-                                // Put the quote and the author to correct column on Parse
-                                post.putQuote(quote)
-                                post.putAuthor(author)
-                            }
-                            catch (e: JSONException) {
-                                e.printStackTrace()
-                            }
-                            }, { error -> error.printStackTrace() })
-
-                            requestQueue?.add(request)
                         }
 
                         suggestionAdapter.notifyDataSetChanged()
@@ -171,5 +145,36 @@ class SuggestionActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun fetchRandomQuote(post: Post){
+        // Load and display 1 "Quote of the day"
+        quoteQueue = Volley.newRequestQueue(this)
+
+        // The URL that stores our JSON database
+        val url = "https://jsonkeeper.com/b/R2BK"
+
+        // Make a request to fetch a random quote
+        val request = JsonObjectRequest(Request.Method.GET, url, null, {
+                response -> try {
+            val jsonArray = response.getJSONArray("quotes")
+            val randomIndex = (0..jsonArray.length()).shuffled().first()
+
+            val randomQuote = jsonArray.getJSONObject(randomIndex)
+            quote = randomQuote.getString("quote")
+            val author = randomQuote.getString("author")
+            tvQuote.text = quote
+            tvQuoteAuthor.text = author
+
+            // Put the quote and the author to correct column on Parse
+            post.putQuote(quote)
+            post.putAuthor(author)
+        }
+        catch (e: JSONException) {
+            e.printStackTrace()
+        }
+        }, { error -> error.printStackTrace() })
+
+        requestQueue?.add(request)
     }
 }
