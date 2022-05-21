@@ -32,11 +32,14 @@ class Post: ParseObject() {
     fun getJournal() = getString(KEY_JOURNAL)
     fun putJournal(journal: String) = put(KEY_JOURNAL, journal)
 
-    fun getAuthor() = getParseUser(KEY_AUTHOR)
+    fun getAuthor() = getString(KEY_AUTHOR)
     fun putAuthor(author: String) = put(KEY_AUTHOR, author)
 
-    fun getSuggestion() = getParseObject(KEY_SUGGESTION)
+    fun getSuggestion() = getString(KEY_SUGGESTION)
     fun putSuggestion(advice: String) = put(KEY_SUGGESTION, advice)
+
+    fun getQuote() = getString(KEY_QUOTE)
+    fun putQuote(quote: String) = put(KEY_QUOTE, quote)
 
     fun getCreatedDate(): String {
         val originalDate = this.getCreatedAt().toString() //Sat May 14 19:26:07 PDT 2022
@@ -56,9 +59,6 @@ class Post: ParseObject() {
     }
 
     fun putEmotion(emotion: Emotion) = put(KEY_EMOTION, emotion)
-
-    fun getQuote() = getString(KEY_QUOTE)
-    fun putQuote(quote: String) = put(KEY_QUOTE, quote)
 
     fun putDashboard(includeInDashboard: Int) = put(KEY_DASHBOARD, includeInDashboard)
 }
