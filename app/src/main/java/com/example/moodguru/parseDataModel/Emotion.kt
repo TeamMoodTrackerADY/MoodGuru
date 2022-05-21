@@ -1,6 +1,5 @@
 package com.example.moodguru.parseDataModel
 
-import android.util.Log
 import com.parse.*
 
 @ParseClassName("Emotion")

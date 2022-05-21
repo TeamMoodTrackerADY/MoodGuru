@@ -11,13 +11,13 @@ import com.example.moodguru.parseDataModel.Advice
 class SuggestionAdapter(val context: Context, val suggestionList: MutableList<Advice>):
     RecyclerView.Adapter<SuggestionAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuggestionAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // Specify the layout file to use for this item
         val view = LayoutInflater.from(context).inflate(R.layout.item_suggestion, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: SuggestionAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(suggestionList[position])
     }
 

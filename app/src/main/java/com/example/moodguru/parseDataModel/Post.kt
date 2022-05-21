@@ -1,8 +1,6 @@
 package com.example.moodguru.parseDataModel
 
-import android.util.Log
 import com.parse.ParseClassName
-import com.parse.ParseFile
 import com.parse.ParseObject
 import com.parse.ParseUser
 import java.util.*
@@ -16,9 +14,13 @@ class Post: ParseObject() {
         val KEY_JOURNAL = "journal"
         val KEY_AUTHOR = "author"
 
-        val KEY_SUGGESTION = "suggestion"
+        val KEY_SUGGESTION = "advice"
         val KEY_DATE = "createdAt"
         val KEY_EMOTION = "emotion"
+
+        val KEY_QUOTE = "quote"
+
+        val KEY_DASHBOARD = "includeInDashboard"
     }
 
     fun getAdjective() = getString(KEY_ADJ)
@@ -31,10 +33,10 @@ class Post: ParseObject() {
     fun putJournal(journal: String) = put(KEY_JOURNAL, journal)
 
     fun getAuthor() = getParseUser(KEY_AUTHOR)
-    fun putAuthor(author: ParseUser) = put(KEY_AUTHOR, author)
+    fun putAuthor(author: String) = put(KEY_AUTHOR, author)
 
     fun getSuggestion() = getParseObject(KEY_SUGGESTION)
-//    fun putSuggestion() = put(KEY_SUGGESTION, )
+    fun putSuggestion(advice: String) = put(KEY_SUGGESTION, advice)
 
     fun getCreatedDate(): String {
         val originalDate = this.getCreatedAt().toString() //Sat May 14 19:26:07 PDT 2022
@@ -52,5 +54,11 @@ class Post: ParseObject() {
         val emotion = getParseObject(KEY_EMOTION) as Emotion
         return emotion
     }
+
     fun putEmotion(emotion: Emotion) = put(KEY_EMOTION, emotion)
+
+    fun getQuote() = getString(KEY_QUOTE)
+    fun putQuote(quote: String) = put(KEY_QUOTE, quote)
+
+    fun putDashboard(includeInDashboard: Int) = put(KEY_DASHBOARD, includeInDashboard)
 }
