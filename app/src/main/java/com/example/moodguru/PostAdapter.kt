@@ -1,6 +1,7 @@
 package com.example.moodguru
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +15,10 @@ import com.example.moodguru.parseDataModel.Emotion
 import com.example.moodguru.parseDataModel.Post
 import com.parse.ParseQuery
 
-
+const val POST_EXTRA = "POST_EXTRA"
 class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Adapter<PostAdapter.ViewHolder>(){
-    val emotionList: MutableList<Emotion> = mutableListOf()
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
         val tvDate: TextView
         val tvContent : TextView
         val ivEmoji: ImageView
@@ -36,6 +36,13 @@ class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Ad
                 .load(post.getEmotion().getEmoji()?.url)
                 .override(80, 80)
                 .into(ivEmoji)
+        }
+
+        override fun onClick(v: View?){
+            val post = posts[adapterPosition]
+            val intent = Intent(context, DetailPostActivity::class.java)
+            intent.putExtra(POST_EXTRA, post)
+            context.startActivity(intent)
         }
     }
 
