@@ -8,7 +8,7 @@
 <a name="ov"></a>
 ## Overview
 ### Description
-MoodGuru is an mood-tracking app that analyzes user's current mood based on their journals via NLP, provides customized feedbacks, and records user's mood pattern over time, aiming to improve users' self-awareness about what triggers different emotions and how to culture a healthy mindset. 
+MoodGuru is an mood-tracking app that analyzes user's current mood based on their journals via NLP, provides customized feedback, and records user's mood pattern over time, aiming to improve users' self-awareness about what triggers different emotions and how to culture a healthy mindset. 
 
 Below are two sample usages when a user is happy and angry. 
 
