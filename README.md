@@ -15,7 +15,7 @@ Below are two sample usages when a user is happy and angry.
 ![Walk-through-joy](https://github.com/TeamMoodTrackerADY/MoodGuru/blob/main/mood_guru_ms2.gif)
 ![Walk-through-anger](https://media.giphy.com/media/c5qP69vdd1UfkcVABB/giphy.gif)
 
-Liscence warning due to application of [Free liscence of Chaquopy](https://chaquo.com/chaquopy/free-license/) being processed.
+Liscence warning due to application for [Free liscence of Chaquopy](https://chaquo.com/chaquopy/free-license/) being processed.
 
 For the next milestones, we will work on 
 - Community feature allowing users to offer suggestions to one another. 
