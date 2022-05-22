@@ -1,27 +1,27 @@
 # MoodGuru
 
 ## Table of Contents
-1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
+1. [Overview](#ov)
+1. [Product Spec](#ps)
+1. [Wireframes](#wf)
 
+<a name="ov"></a>
 ## Overview
 ### Description
-It is an app to track users' daily mood (i.e a journal but to track how they are feeling every day). The app will display a variety of emotions to the users as a multiple choice question and they can choose whichever emotion that describes them the best of that day. Users will also be able to input ratings of their overall mood and specific emotions on a scale of 1-10. 
+MoodGuru is an mood-tracking app that utilizes nlp to analyze user's current mood based on their journals, provides customized feedbacks, and records user's mood pattern over time, aiming to improve users' self-awareness about what triggers different emotion and how to culture a healthy mindset. 
 
-After a few days of inputting the users' mood, the app can display a chart of how the users have been feeling so far and give a rating of whether they have been feeling happy or not. It can give the users some suggestions on how to improve/ maintain their mental health based on that rating. Users can also input their own experience/suggestions into the pool so that others can see their suggestions.
+Below are two sample usages when a user is happy and angry. 
 
-Additionally, there will also be a note-taking/ journaling feature where the users can write down what they have been doing, how they have been feeling and their reflection for the day.
+![Walk-through-joy](https://github.com/TeamMoodTrackerADY/MoodGuru/blob/main/mood_guru_ms2.gif)
+![Walk-through-anger](https://media.giphy.com/media/c5qP69vdd1UfkcVABB/giphy.gif)
 
-### Progress
-#### Milestone 2 (5/15/2022 - 5/21/2022)
-![MS2-1](https://media.giphy.com/media/GO7QE8FCtTTGqkW88C/giphy.gif)
-![MS2-2](https://media.giphy.com/media/vmznPTYn6inuaMpcH1/giphy.gif)
+Liscence warning due to application of [Free liscence of Chaquopy](https://chaquo.com/chaquopy/free-license/) being processed.
 
+For the next milestones, we will work on 
+- Community feature allowing users to offer suggestions to one another. 
+- Chart to visualize user's mood pattern over time. 
+- Topic tagging on user's journal to provide more customized feedbacks. 
 
-#### Milestone 1 (5/7/2022 - 5/14/2022)
-![MS1](https://media.giphy.com/media/Xi9TjrhRnRzpuqI1yn/giphy.gif)
 
 ### App Evaluation
 
@@ -32,6 +32,7 @@ Additionally, there will also be a note-taking/ journaling feature where the use
 - **Habit:** Since this app's main purpose is to reflect and journal, it could form a healthy habit for the users. If they find suggestions or motivation notes helpful, they would be more likely to use it and gradually form a habit. 
 - **Scope:** There is a lot of potential to increase the scope of this app since there are many extra features that can be implemented besides inputting daily moods and journaling. However, as of now, the required user stories should be helpful enough to the users.
 
+<a name="ps"></a>
 ## Product Spec
 
 ### 1. User Stories (Required and Optional)
@@ -91,7 +92,7 @@ Optional:
 * Profile
 
 
-**Flow Navigation** (Screen to Screen)
+** Flow Navigation** (Screen to Screen)
 
 - Login/ Sign up -> Dashboard -> Compose -> Emojis & Ratings -> Compose Journal -> Suggestions
 
@@ -99,16 +100,11 @@ Optional:
 
 - (Optional) Emojis & Ratings -> Add emojis -> Customize emojis
 
-
+<a name="wf"></a>
 ## Wireframes
 <img src="https://i.imgur.com/oITiFAv.png" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
 
-### [BONUS] Interactive Prototype
-
-## Schema 
-[This section will be completed in Unit 9]
 ### Models
 
 * Post
@@ -138,28 +134,11 @@ Optional:
 | quotation     | String     |  a quote related to the journal/emotions    |
 | advice     | String   | useful tips on what to do to get rid of bad emotion or how to keep a positive mindset   |
 
-
-### Networking
-Login Screen
-* (Create) Sign up with username and password
-* (Get) Sign up with username and password
-
-Past Journal Stream Screen
-* (Read/GET) Query all posts where user is author
+## Open-source libraries used
+- [vaderSentiment](https://github.com/cjhutto/vaderSentiment) - NLP entiment analysis tool that scores the polarity and intensity of a sentence/paragraph
+- [Chaquopy](https://chaquo.com/chaquopy/) - API for calling Python code in Java/Kotlin.
+- [Volley](https://github.com/google/volley) - an HTTP library that makes networking for Android apps easier and, most importantly, faster.
+- [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing.
+- [Glide](https://github.com/bumptech/glide) - Image loading and caching library for Android.
 
 
-Compose Screen
-* (Create/POST) Create a new post
-
-
-Suggestions Screen
-* (Get) Call from api suggestions related to user emotion/topic (MVP hardcode)
-
-Search for emoji Screen
-* (Get) Get emoji related to the keyword
-
-### Optional API:
-* [Login using Google](https://developers.google.com/identity/sign-in/android/sign-in)
-* [Spotify API](https://developer.spotify.com/documentation/android/quick-start/)
-* [Emotion analysis](https://www.twinword.com/api/emotion-analysis.php)
-* [Topic extracter](https://www.twinword.com/api/topic-tagging.php)
