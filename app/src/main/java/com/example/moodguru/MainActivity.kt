@@ -1,5 +1,6 @@
 package com.example.moodguru
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -52,8 +53,10 @@ class MainActivity : AppCompatActivity() {
 
                 // compose button listener
                 R.id.action_compose -> {
-                    fragmentToShow = ComposeFragment()
+//                    fragmentToShow = ComposeFragment()
                     // Toast.makeText(this, "Compose", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, ComposeActivity::class.java)
+                    startActivity(intent)
                 }
 
                 // chart button listener

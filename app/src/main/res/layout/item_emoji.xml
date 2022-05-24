@@ -2,12 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
 
     <ImageView
         android:id="@+id/ivEmoji"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_emoji_placeholder"
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ivEmoji"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
         android:text="Joy"
         android:textSize="20sp" />
 

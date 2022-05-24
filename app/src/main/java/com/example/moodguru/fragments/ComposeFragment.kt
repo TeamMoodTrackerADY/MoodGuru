@@ -1,7 +1,6 @@
 package com.example.moodguru.fragments
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.graphics.drawable.DrawableCompat
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.setFragmentResultListener
 import com.bumptech.glide.Glide
 import com.example.moodguru.EmotionAnalyzer
@@ -40,7 +38,8 @@ class ComposeFragment : Fragment() {
     companion object{
         val TAG = "ComposeFragment"
         val KEY_REQUEST_EMO = "select_an_emotion"
-        val HINT = "What makes you %s?"
+        val PROMPT = "What brings you %s?"
+        val HINT = "I feel %s because ..."
         val KEY_ADJ_TO_SUGG = "send_adj_to_suggestion"
         val KEY_RATING_TO_SUGG = "send_rating_to_suggestion"
         val KEY_JOURNAL_TO_SUGG = "send_journal_to_suggestion"
@@ -66,6 +65,7 @@ class ComposeFragment : Fragment() {
                 adjToSend = emotion.getAdjective()
                 emotionToSend = emotion
                 setEmotionToDisplay(emotion)
+                tvEmotionLabel.text = String.format(PROMPT, emotion.getAdjective()?.lowercase())
                 etJournal.hint = String.format(HINT, emotion.getAdjective()?.lowercase())
             }
         }
@@ -103,9 +103,10 @@ class ComposeFragment : Fragment() {
 
        })
         
-        ivEmoji.setOnClickListener {
-            EmotionFragment.showEmotionFragment(requireActivity().supportFragmentManager)
-        }
+//        ivEmoji.setOnClickListener {
+////            EmotionFragment.showEmotionFragment(requireActivity().supportFragmentManager)
+//            EmotionFragment.newInstance().show(requireActivity().supportFragmentManager, TAG)
+//        }
 
         // Send current adjective & rating to SuggestionActivity
         btnContinue.setOnClickListener {
