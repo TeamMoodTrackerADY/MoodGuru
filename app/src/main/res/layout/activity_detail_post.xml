@@ -97,17 +97,18 @@
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:textSize="17sp"/>
+
             <TextView
                 android:id="@+id/tvDetailSuggestion2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="suggestion2"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
+                android:lineSpacingExtra="0sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
-                android:lineSpacingExtra="4sp"
-                android:textSize="17sp"/>
+                android:text="suggestion2"
+                android:textSize="17sp" />
             <TextView
                 android:id="@+id/tvDetailSuggestion3"
                 android:layout_width="match_parent"
