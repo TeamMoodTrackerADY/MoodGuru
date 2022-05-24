@@ -1,21 +1,22 @@
 package com.example.moodguru.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
+import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moodguru.DetailPostActivity
 import com.example.moodguru.PostAdapter
 import com.example.moodguru.R
-import com.example.moodguru.parseDataModel.Emotion
 import com.example.moodguru.parseDataModel.Post
 import com.parse.FindCallback
-import com.parse.ParseQuery
 import com.parse.ParseException
+import com.parse.ParseQuery
 import com.parse.ParseUser
 
 class DashboardFragment : Fragment() {

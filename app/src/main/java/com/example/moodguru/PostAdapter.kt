@@ -1,13 +1,18 @@
 package com.example.moodguru
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.Log
+import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moodguru.fragments.EmotionFragment
@@ -38,9 +43,24 @@ class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Ad
 
         override fun onClick(v: View?){
             val post = posts[adapterPosition]
+
+            // 2. Use the intent system to navigate to new activity
             val intent = Intent(context, DetailPostActivity::class.java)
             intent.putExtra(POST_EXTRA, post)
-            context.startActivity(intent)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                // Apply activity transition
+                val tvDatePair = Pair.create<View, String>(tvDate, "tvDate")
+                val tvContentPair = Pair.create<View, String>(tvContent, "tvContent")
+                val ivEmojiPair = Pair.create<View, String>(ivEmoji, "ivEmoji")
+                val options = ActivityOptions.makeSceneTransitionAnimation(context as Activity,
+                    tvDatePair, ivEmojiPair, tvContentPair)
+
+                context.startActivity(intent, options.toBundle())
+            } else {
+                // Swap without transition
+                context.startActivity(intent)
+            }
         }
     }
 
