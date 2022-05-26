@@ -25,8 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="What brings you %s?"
+            android:textColor="@color/dark_green"
             android:fontFamily="@font/akaya_telivigala"
-            android:textSize="30sp"/>
+            android:textSize="35sp"/>
 
 
     </LinearLayout>
@@ -53,8 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
-            android:progressBackgroundTint="@color/logo_yellow"
-            android:secondaryProgressTint="@color/black"
+            android:progressBackgroundTint="@color/grey"
             android:stepSize="0.5" />
 
     </LinearLayout>

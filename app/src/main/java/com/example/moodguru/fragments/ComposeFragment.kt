@@ -142,12 +142,26 @@ class ComposeFragment : Fragment() {
     private fun updateRatingBar(rating: Float) {
         this.ratingToSend = rating
         ratingBar.rating = Math.abs(rating * 5.0).toFloat()
-        if (rating > 0.5)
-            DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.orange_pos))
-        else if (rating < -0.5)
-            DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.blue_neg))
-        else
-            DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.logo_yellow))
+        var color: Int = R.color.grey
+        val r = (rating * 5.0).toFloat()
+        when{
+            r >= 4 -> color = R.color.orange_5
+            r >= 3 -> color = R.color.orange_4
+            r >= 2 -> color = R.color.orange_3
+            r >= 1 -> color = R.color.orange_2
+            r >= 0 -> color = R.color.orange_1
+            r >= -1 -> color = R.color.blue_1
+            r >= -2 -> color = R.color.blue_2
+            r >= -3 -> color = R.color.blue_3
+            r >= -4 -> color = R.color.blue_3
+            r >= -5 -> color = R.color.blue_4
+
+        }
+        setColor(color)
         Log.d(TAG, "emo = $rating")
+    }
+
+    private fun setColor(color: Int){
+        DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(color))
     }
 }

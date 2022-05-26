@@ -12,6 +12,15 @@
     <color name="speech_yellow_darker">#ffecbc</color>
     <color name="speech_yellow">#ffde89</color>
     <color name="darker_green">#193038</color>
-    <color name="blue_neg">#398DFF</color>
-    <color name="orange_pos">#FF9C72</color>
+    <color name="blue_1">#ace6ff</color>
+    <color name="blue_2">#59ceff</color>
+    <color name="blue_3">#0980b2</color>
+    <color name="blue_4">#054966</color>
+    <color name="blue_5">#000000</color>
+    <color name="orange_1">#FFae8c</color>
+    <color name="orange_2">#FF9C72</color>
+    <color name="orange_3">#ff7840</color>
+    <color name="orange_4">#ff6626</color>
+    <color name="orange_5">#ff540d</color>
+    <color name="grey">#666666</color>
 </resources>

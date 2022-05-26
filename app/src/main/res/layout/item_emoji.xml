@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ivEmoji"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/black"
+        android:fontFamily="@font/akaya_telivigala"
+        android:textColor="@color/dark_green"
         android:text="Joy"
         android:textSize="20sp" />
 

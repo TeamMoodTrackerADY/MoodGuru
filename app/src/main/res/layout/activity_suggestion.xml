@@ -31,7 +31,7 @@
             android:fontFamily="@font/akaya_telivigala"
             android:text="Suggestions"
             android:textColor="@color/dark_green"
-            android:textSize="40sp" />
+            android:textSize="35sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSuggestions"
@@ -55,8 +55,7 @@
             android:fontFamily="@font/akaya_telivigala"
             android:text="Quote of the Day"
             android:textColor="@color/dark_green"
-            android:textSize="40sp" />
-
+            android:textSize="35sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
