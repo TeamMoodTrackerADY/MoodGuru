@@ -130,12 +130,8 @@ class ComposeFragment : Fragment() {
 
                 i.putExtra(KEY_RATING_TO_SUGG, ratingToSend)
                 startActivity(i)
-                // TODO: transaction
             }
-
         }
-
-
     }
 
     private fun updateRatingBar(rating: Float) {
