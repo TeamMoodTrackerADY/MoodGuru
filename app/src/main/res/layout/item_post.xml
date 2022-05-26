@@ -7,7 +7,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:background="#FFEECC">
+    android:background="@drawable/dashboard_post_rectangle">
 
     <TextView
         android:id="@+id/tvDashboardDate"
@@ -24,7 +24,8 @@
         android:layout_marginBottom="5dp"
         android:layout_toLeftOf="@+id/ivDashboardEmoji"
         android:singleLine="true"
-        android:text="5/14/2022 (Sat)" />
+        android:text="5/14/2022 (Sat)"
+        android:paddingLeft="5dp"/>
 
     <ImageView
         android:id="@+id/ivDashboardEmoji"
@@ -52,5 +53,6 @@
         android:layout_toLeftOf="@+id/ivDashboardEmoji"
         android:ellipsize="end"
         android:maxLines="3"
-        android:text="The upcoming math midterm is freaking me out. I haven't been to that class for weeks and I have no idea how to do the hw." />
+        android:text="The upcoming math midterm is freaking me out. I haven't been to that class for weeks and I have no idea how to do the hw."
+        android:paddingLeft="5dp" />
 </RelativeLayout>
