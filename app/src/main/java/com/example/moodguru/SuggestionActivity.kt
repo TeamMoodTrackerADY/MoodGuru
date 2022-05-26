@@ -108,6 +108,7 @@ class SuggestionActivity : AppCompatActivity() {
                             post.putRating(rating)
                             post.putEmotion(emotion)
                             post.putSuggestion(advice)
+                            post.putDate(post.getDate())
                             fetchRandomQuote(post)
 
                         }

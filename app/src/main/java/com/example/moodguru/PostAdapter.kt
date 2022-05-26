@@ -28,7 +28,7 @@ class PostAdapter(val context: Context, val posts: List<Post>) : RecyclerView.Ad
         }
 
         fun bind(post: Post){
-            tvDate.text = post.getCreatedDate()
+            tvDate.text = post.getDate()
             tvContent.text = post.getJournal()
             Glide.with(itemView.context)
                 .load(post.getEmotion().getEmoji()?.url)
