@@ -26,13 +26,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_margin="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="5/14/2022 (Sat)"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                android:textSize="30sp"/>
+                android:transitionName="tvDate" />
 
             <ImageView
                 android:id="@+id/ivDetailEmoji"
@@ -40,8 +44,12 @@
                 android:layout_height="140dp"
                 android:layout_below="@+id/tvDetailDate"
                 android:layout_alignParentRight="true"
-                android:layout_margin="5dp"
-                android:src="@drawable/ic_emoji_placeholder" />
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/ic_emoji_placeholder"
+                android:transitionName="ivEmoji" />
 
             <TextView
                 android:id="@+id/tvDetailContent"
@@ -59,7 +67,8 @@
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="20dp"
                 android:text="a very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long journal"
-                android:textSize="17sp" />
+                android:textSize="17sp"
+                android:transitionName="tvContent" />
         </RelativeLayout>
 
         <View
@@ -97,17 +106,18 @@
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:textSize="17sp"/>
+
             <TextView
                 android:id="@+id/tvDetailSuggestion2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="suggestion2"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
+                android:lineSpacingExtra="0sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
-                android:lineSpacingExtra="4sp"
-                android:textSize="17sp"/>
+                android:text="suggestion2"
+                android:textSize="17sp" />
             <TextView
                 android:id="@+id/tvDetailSuggestion3"
                 android:layout_width="match_parent"
