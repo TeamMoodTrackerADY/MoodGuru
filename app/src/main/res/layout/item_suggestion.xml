@@ -7,9 +7,16 @@
 
     <TextView
         android:id="@+id/tvAdvice"
-        android:layout_width="350dp"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@drawable/speech_shape"
+        android:gravity="center_vertical"
+        android:minHeight="50dp"
+        android:paddingLeft="40dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         android:text="Drink water!"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

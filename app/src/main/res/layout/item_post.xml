@@ -14,8 +14,8 @@
         style="@style/Base.TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
@@ -24,7 +24,8 @@
         android:layout_marginBottom="5dp"
         android:layout_toLeftOf="@+id/ivDashboardEmoji"
         android:singleLine="true"
-        android:text="5/14/2022 (Sat)" />
+        android:text="5/14/2022 (Sat)"
+        android:transitionName="tvDate" />
 
     <ImageView
         android:id="@+id/ivDashboardEmoji"
@@ -36,6 +37,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
+        android:transitionName="ivEmoji"
         app:srcCompat="@drawable/ic_emoji_placeholder" />
 
     <TextView
@@ -52,5 +54,6 @@
         android:layout_toLeftOf="@+id/ivDashboardEmoji"
         android:ellipsize="end"
         android:maxLines="3"
-        android:text="The upcoming math midterm is freaking me out. I haven't been to that class for weeks and I have no idea how to do the hw." />
+        android:text="The upcoming math midterm is freaking me out. I haven't been to that class for weeks and I have no idea how to do the hw."
+        android:transitionName="tvContent" />
 </RelativeLayout>
