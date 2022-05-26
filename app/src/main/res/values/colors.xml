@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_green">#245960</color>
     <color name="logo_yellow">#FFC93C</color>
+    <color name="speech_yellow_darker">#ffecbc</color>
+    <color name="speech_yellow">#ffde89</color>
     <color name="darker_green">#193038</color>
     <color name="blue_neg">#398DFF</color>
     <color name="orange_pos">#FF9C72</color>

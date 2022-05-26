@@ -43,7 +43,6 @@ class EmotionAdapter(val context: Context, val emotionList: MutableList<Emotion>
                 .into(ivEmoji)
 
             // TODO: UI to make an emoji look selected
-
             ivEmoji.setOnClickListener {
                 onSelectHandler.onSelect(emotion)
                 notifyItemChanged(selectedPosition)
