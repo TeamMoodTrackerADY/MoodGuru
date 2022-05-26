@@ -5,10 +5,25 @@
     android:layout_height="match_parent"
     tools:context=".fragments.EmotionFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emoSelPrompt"
+        android:layout_marginTop="10dp"
+        android:text="How do you feel right now?"
+        android:textSize="30sp"
+        android:fontFamily="@font/akaya_telivigala"
+        android:textColor="@color/dark_green"
+        android:layout_centerHorizontal="true"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEmotions"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emoSelPrompt"
+        android:layout_centerInParent="true"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="10dp"/>
 
 
 </RelativeLayout>
