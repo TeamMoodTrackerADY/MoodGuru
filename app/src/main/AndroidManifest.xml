@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoodGuru"
+        android:windowSoftInputMode="adjustPan"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".DetailPostActivity"
