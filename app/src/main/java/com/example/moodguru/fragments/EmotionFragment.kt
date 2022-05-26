@@ -1,5 +1,7 @@
 package com.example.moodguru.fragments
 
+import android.content.res.Resources
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -27,7 +29,7 @@ import com.parse.ParseQuery
  * Use the [EmotionFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class EmotionFragment : DialogFragment() {
+class EmotionFragment : Fragment() {
 
     lateinit var rvEmotions: RecyclerView
     lateinit var emotionAdapter: EmotionAdapter
@@ -42,7 +44,6 @@ class EmotionFragment : DialogFragment() {
             override fun onSelect(emotion: Emotion) {
 //                Toast.makeText(requireContext(), emotion.getAdjective() + " is selected", Toast.LENGTH_SHORT).show()
                 setFragmentResult(ComposeFragment.KEY_REQUEST_EMO, bundleOf(KEY_SELECT_EMO to emotion))
-                dismiss()
             }
 
         })
@@ -93,17 +94,17 @@ class EmotionFragment : DialogFragment() {
         }
 
         // TODO: emotion dialog not show itself, violate SRP
-        fun showEmotionFragment(fragmentManager: FragmentManager) {
-            val emotionFragment = newInstance()
-            emotionFragment.show(fragmentManager, TAG)
-        }
+//        fun showEmotionFragment(fragmentManager: FragmentManager) {
+//            val emotionFragment = newInstance()
+//            emotionFragment.show(fragmentManager, TAG)
+//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         rvEmotions = view.findViewById(R.id.rvEmotions)
-        rvEmotions.layoutManager = GridLayoutManager(requireContext(), 3)
+        rvEmotions.layoutManager = GridLayoutManager(requireContext(), 2)
         rvEmotions.adapter = emotionAdapter
 
     }

@@ -1,7 +1,6 @@
 package com.example.moodguru.fragments
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.graphics.drawable.DrawableCompat
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.setFragmentResultListener
 import com.bumptech.glide.Glide
 import com.example.moodguru.EmotionAnalyzer
@@ -40,7 +38,8 @@ class ComposeFragment : Fragment() {
     companion object{
         val TAG = "ComposeFragment"
         val KEY_REQUEST_EMO = "select_an_emotion"
-        val HINT = "What makes you %s?"
+        val PROMPT = "What brings you %s?"
+        val HINT = "I feel %s because ..."
         val KEY_ADJ_TO_SUGG = "send_adj_to_suggestion"
         val KEY_RATING_TO_SUGG = "send_rating_to_suggestion"
         val KEY_JOURNAL_TO_SUGG = "send_journal_to_suggestion"
@@ -66,6 +65,7 @@ class ComposeFragment : Fragment() {
                 adjToSend = emotion.getAdjective()
                 emotionToSend = emotion
                 setEmotionToDisplay(emotion)
+                tvEmotionLabel.text = String.format(PROMPT, emotion.getAdjective()?.lowercase())
                 etJournal.hint = String.format(HINT, emotion.getAdjective()?.lowercase())
             }
         }
@@ -103,9 +103,10 @@ class ComposeFragment : Fragment() {
 
        })
         
-        ivEmoji.setOnClickListener {
-            EmotionFragment.showEmotionFragment(requireActivity().supportFragmentManager)
-        }
+//        ivEmoji.setOnClickListener {
+////            EmotionFragment.showEmotionFragment(requireActivity().supportFragmentManager)
+//            EmotionFragment.newInstance().show(requireActivity().supportFragmentManager, TAG)
+//        }
 
         // Send current adjective & rating to SuggestionActivity
         btnContinue.setOnClickListener {
@@ -141,12 +142,26 @@ class ComposeFragment : Fragment() {
     private fun updateRatingBar(rating: Float) {
         this.ratingToSend = rating
         ratingBar.rating = Math.abs(rating * 5.0).toFloat()
-        if (rating > 0.5)
-            DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.orange_pos))
-        else if (rating < -0.5)
-            DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.blue_neg))
-        else
-            DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(R.color.logo_yellow))
+        var color: Int = R.color.grey
+        val r = (rating * 5.0).toFloat()
+        when{
+            r >= 4 -> color = R.color.orange_5
+            r >= 3 -> color = R.color.orange_4
+            r >= 2 -> color = R.color.orange_3
+            r >= 1 -> color = R.color.orange_2
+            r >= 0 -> color = R.color.orange_1
+            r >= -1 -> color = R.color.blue_1
+            r >= -2 -> color = R.color.blue_2
+            r >= -3 -> color = R.color.blue_3
+            r >= -4 -> color = R.color.blue_3
+            r >= -5 -> color = R.color.blue_4
+
+        }
+        setColor(color)
         Log.d(TAG, "emo = $rating")
+    }
+
+    private fun setColor(color: Int){
+        DrawableCompat.setTint(ratingBar.progressDrawable, resources.getColor(color))
     }
 }

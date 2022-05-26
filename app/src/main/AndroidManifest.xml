@@ -17,6 +17,9 @@
         android:theme="@style/Theme.MoodGuru"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ComposeActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailPostActivity"
             android:exported="false" />
 
@@ -35,7 +38,7 @@
 
         <activity
             android:name=".SuggestionActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -47,7 +50,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

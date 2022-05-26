@@ -5,67 +5,67 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ComposeFragment">
 
-    <TextView
-        android:id="@+id/tvPrompt"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:text=""
-        android:visibility="gone"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
-
-
-    <RelativeLayout
-        android:id="@+id/emojiSelector"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvPrompt"
-        android:layout_marginTop="20dp">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:id="@+id/prompt">
 
         <ImageView
             android:id="@+id/ivEmoji"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_emoji_placeholder" />
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/tvEmotionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/ivEmoji">
+            android:layout_centerHorizontal="true"
+            android:text="What brings you %s?"
+            android:textColor="@color/dark_green"
+            android:fontFamily="@font/akaya_telivigala"
+            android:textSize="35sp"/>
 
-            <TextView
-                android:id="@+id/tvEmotionLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="How are you right now?"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-            <RatingBar
-                android:id="@+id/rbEmotionLevel"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvEmotionLabel"
-                android:numStars="5"
-                android:progressBackgroundTint="@color/logo_yellow"
-                android:secondaryProgressTint="@color/black"
-                android:stepSize="0.5" />
-        </RelativeLayout>
+    </LinearLayout>
 
-    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/positivity"
+        android:layout_below="@id/prompt"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_gravity="center_vertical"
+            android:text="Positivity score:"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_horizontal"/>
+        <RatingBar
+            android:id="@+id/rbEmotionLevel"
+            android:layout_below="@id/prompt"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:progressBackgroundTint="@color/grey"
+            android:stepSize="0.5" />
+
+    </LinearLayout>
 
 
     <EditText
         android:id="@+id/etJournalContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/positivity"
         android:layout_above="@id/btnContinue"
-        android:layout_below="@id/emojiSelector"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
@@ -80,14 +80,11 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/logo_yellow"
         android:layout_marginHorizontal="10dp"
         android:text="Continue"
         android:id="@+id/btnContinue"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
-        android:textColor="@color/black"
         android:padding="10dp"/>
 
 
