@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.example.moodguru.fragments.ChartFragment
 import com.example.moodguru.fragments.ComposeFragment
 import com.example.moodguru.fragments.DashboardFragment
@@ -39,15 +40,26 @@ class ComposeActivity : AppCompatActivity() {
                 CANCEL -> {
                     Log.d(TAG, "cancel")
                     finish()
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                 }
                 BACK ->{
                     fragmentToShow = EmotionFragment()
+                    supportFragmentManager.commit {
+                        setCustomAnimations(
+                            R.anim.slide_in_left,
+                            R.anim.slide_out_right,
+                            R.anim.fade_in,
+                            R.anim.fade_out
+                        )
+                        replace(R.id.frgContainer, fragmentToShow)
+                        addToBackStack(null)
+                    }
                     btnPrev.text = CANCEL
                     btnNext.text = CONTINUE
                     btnNext.visibility = View.VISIBLE
                 }
             }
-            fragmentManager.beginTransaction().replace(R.id.frgContainer, fragmentToShow).commit()
+            //fragmentManager.beginTransaction().replace(R.id.frgContainer, fragmentToShow).commit()
         }
 
         btnNext.setOnClickListener {
@@ -55,6 +67,16 @@ class ComposeActivity : AppCompatActivity() {
                 CONTINUE -> {
                     // TODO: send data from emotion to compose
                     fragmentToShow = ComposeFragment()
+                    supportFragmentManager.commit {
+                        setCustomAnimations(
+                            R.anim.slide_in_right,
+                            R.anim.slide_out_left,
+                            R.anim.fade_in,
+                            R.anim.fade_out
+                        )
+                        replace(R.id.frgContainer, fragmentToShow)
+                        addToBackStack(null)
+                    }
                     btnPrev.text = BACK
                     btnNext.text = SAVE
                     btnNext.visibility = View.GONE
@@ -64,7 +86,7 @@ class ComposeActivity : AppCompatActivity() {
                 }
 
             }
-            fragmentManager.beginTransaction().replace(R.id.frgContainer, fragmentToShow).commit()
+            //fragmentManager.beginTransaction().replace(R.id.frgContainer, fragmentToShow).commit()
         }
 
 

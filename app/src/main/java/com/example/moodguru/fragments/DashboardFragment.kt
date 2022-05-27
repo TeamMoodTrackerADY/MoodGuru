@@ -1,16 +1,13 @@
 package com.example.moodguru.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moodguru.DetailPostActivity
 import com.example.moodguru.PostAdapter
 import com.example.moodguru.R
 import com.example.moodguru.parseDataModel.Post
@@ -53,6 +50,7 @@ class DashboardFragment : Fragment() {
         queryPosts()
     }
 
+
     // Query for all posts in our server
     open fun queryPosts(){
         // Specify which class to query
@@ -73,7 +71,7 @@ class DashboardFragment : Fragment() {
                 }else{
                     if (posts != null){
                         for (post in posts){
-                            Log.i(TAG, "Post: " + post.getJournal() + ", Date: " + post.getCreatedDate())
+                            Log.i(TAG, "Post: " + post.getJournal() + ", Date: " + post.getDate())
                         }
                         allPosts.addAll(posts)
                         adapter.notifyDataSetChanged()

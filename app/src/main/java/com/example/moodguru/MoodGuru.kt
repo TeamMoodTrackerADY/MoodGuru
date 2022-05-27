@@ -1,10 +1,7 @@
 package com.example.moodguru
 
 import android.app.Application
-import com.example.moodguru.parseDataModel.Advice
-import com.example.moodguru.parseDataModel.Emotion
-import com.example.moodguru.parseDataModel.Post
-import com.example.moodguru.parseDataModel.Quote
+import com.example.moodguru.parseDataModel.*
 import com.parse.Parse
 import com.parse.ParseObject
 
@@ -14,6 +11,7 @@ class MoodGuru : Application() {
         ParseObject.registerSubclass(Post::class.java)
         ParseObject.registerSubclass(Emotion::class.java)
         ParseObject.registerSubclass(Advice::class.java)
+        ParseObject.registerSubclass(Chart::class.java)
 
         Parse.initialize(
             Parse.Configuration.Builder(this)

@@ -18,7 +18,9 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ComposeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+
         <activity
             android:name=".DetailPostActivity"
             android:exported="false" />
@@ -50,7 +52,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
     </application>
 
 </manifest>
