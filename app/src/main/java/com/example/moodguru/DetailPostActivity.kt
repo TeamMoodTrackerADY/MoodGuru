@@ -37,7 +37,7 @@ class DetailPostActivity : AppCompatActivity() {
         tvQuoteAuthor = findViewById(R.id.tvDetailQuoteAuthor)
 
         val post = intent.getParcelableExtra<Post>(POST_EXTRA) as Post
-        tvDate.text = post.getCreatedDate()
+        tvDate.text = post.getDate()
         tvJournal.text = post.getJournal()
         Glide.with(this)
             .load(post.getEmotion().getEmoji()?.url)

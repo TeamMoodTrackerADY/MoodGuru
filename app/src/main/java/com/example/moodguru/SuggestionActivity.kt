@@ -11,15 +11,14 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.moodguru.fragments.ChartFragment
 import com.example.moodguru.fragments.ComposeFragment
 import com.example.moodguru.fragments.EmotionFragment
-import com.example.moodguru.parseDataModel.Advice
-import com.example.moodguru.parseDataModel.Emotion
-import com.example.moodguru.parseDataModel.Post
-import com.parse.ParseQuery
-import com.parse.ParseUser
+import com.example.moodguru.parseDataModel.*
+import com.parse.*
 import org.json.JSONException
 import kotlin.random.Random
+
 
 lateinit var adviceMutableList: MutableList<String>
 
@@ -108,8 +107,9 @@ class SuggestionActivity : AppCompatActivity() {
                             post.putRating(rating)
                             post.putEmotion(emotion)
                             post.putSuggestion(advice)
+                            post.putDate()
+                            post.putDDate()
                             fetchRandomQuote(post)
-
                         }
 
                         suggestionAdapter.notifyDataSetChanged()
@@ -129,6 +129,8 @@ class SuggestionActivity : AppCompatActivity() {
                                     Toast.makeText(this, "Posted!", Toast.LENGTH_SHORT).show()
                                 }
                             }
+
+                            calculateAvgRating(post)
 
                             // Go back to dashboard with the new post on top
                             val i = Intent(this, MainActivity::class.java)
@@ -177,5 +179,80 @@ class SuggestionActivity : AppCompatActivity() {
         }, { error -> error.printStackTrace() })
 
         requestQueue?.add(request)
+    }
+
+    private fun calculateAvgRating(post: Post){
+        // Specify which class to query
+        val chartQuery: ParseQuery<Chart> = ParseQuery.getQuery(Chart::class.java)
+
+        chartQuery.include(Chart.KEY_USER)
+            .include(Chart.KEY_DATE)
+            .include(Chart.KEY_DDATE)
+            .include(Chart.KEY_AVGRATING)
+            .include(Chart.KEY_POSTCOUNT)
+
+        // Return posts in descending order (newer posts appear first)
+        chartQuery.whereEqualTo(Chart.KEY_USER, ParseUser.getCurrentUser())
+        chartQuery.whereEqualTo(Chart.KEY_DATE, post.getDate())
+        chartQuery.findInBackground { charts, e ->
+            Log.i(TAG, "in find in background: " + chartQuery.find().toString())
+            if (e != null){
+                // Something went wrong
+                Log.i(TAG, "Error fetching chart")
+                e.printStackTrace()
+            }else{
+                // the avg rating already exists for this date
+                if (chartQuery.find().size != 0){
+                    var chart = charts[0]
+                    Log.i(TAG, "Date: " + chart.getDate() + ", avg rating: " + chart.getAvgRating() + ", count: " + chart.getPostCount())
+
+                    // calculate the new avg rating
+                    val oldAvg = chart.getAvgRating()
+                    val oldCount = chart.getPostCount()
+                    val oldRating = oldAvg!! * oldCount!!
+                    val newRating = post.getRating()?.plus(oldRating)
+                    val newCount = oldCount+1f
+                    if (newRating != null) {
+                        chart.putAvgRating(newRating/newCount)
+                    }
+                    if (oldCount != null) {
+                        chart.putPostCount(oldCount + 1)
+                    }
+                    chart.putDate(post.getDate().toString())
+                    chart.putDDate(post.getDDate()!!)
+                    chart.putUser(ParseUser.getCurrentUser())
+                    chart.saveInBackground { e ->
+                        if (e == null) {
+                            // Saved successfully.
+                            Log.i(TAG, "chart saved")
+                            Log.i(TAG, "Date: " + chart.getDate() + ", avg rating: " + chart.getAvgRating() + ", count: " + chart.getPostCount())
+                        } else {
+                            // The save failed.
+                            Log.i(TAG, "chart save failed")
+                        }
+                    }
+                } else {
+                    Log.i(TAG, "there isn't any data for this date: " + post.getDate())
+                    // create a new chart for this date
+                    val newChart = Chart()
+                    newChart.putDate(post.getDate().toString())
+                    newChart.putDDate(post.getDDate()!!)
+                    newChart.putAvgRating(post.getRating()!!.toFloat())
+                    newChart.putPostCount(1f)
+                    newChart.putUser(ParseUser.getCurrentUser())
+
+                    // post to parse
+                    newChart.saveInBackground { e ->
+                        if (e == null) {
+                            // Saved successfully.
+                            Log.i(TAG, "new chart saved")
+                        } else {
+                            // The save failed.
+                            Log.i(TAG, "new chart failed to save")
+                        }
+                    }
+                }
+            }
+        }
     }
 }

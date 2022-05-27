@@ -1,5 +1,6 @@
 package com.example.moodguru.parseDataModel
 
+import android.util.Log
 import com.parse.ParseClassName
 import com.parse.ParseObject
 import com.parse.ParseUser
@@ -17,7 +18,9 @@ class Post: ParseObject() {
         val KEY_AUTHOR = "author"
 
         val KEY_SUGGESTION = "advice"
-        val KEY_DATE = "createdAt"
+        val KEY_DATE = "localTime"
+        val KEY_DDATE = "dateTypeDate"
+
         val KEY_EMOTION = "emotion"
 
         val KEY_QUOTE = "quote"
@@ -46,17 +49,53 @@ class Post: ParseObject() {
     fun getQuote() = getString(KEY_QUOTE)
     fun putQuote(quote: String) = put(KEY_QUOTE, quote)
 
-    fun getCreatedDate(): String {
-        val originalDate = this.getCreatedAt().toString() //Sat May 14 19:26:07 PDT 2022
-        val day = originalDate.substring(0, 3)
-        val month = originalDate.substring(4, 7)
-        val date = originalDate.substring(8, 10)
-        val year = originalDate.substring(24, 28)
+    fun getDate() = getString(KEY_DATE)
+    fun putDate() {
+        var c = Calendar.getInstance(Locale.getDefault())
+//        confirm local time:
+        Log.i("time", c.get(Calendar.HOUR).toString())
+        Log.i("time", c.get(Calendar.MINUTE).toString())
 
-        val completeDate = month + " " + date + ", " + year + " (" + day + ")"
-        return completeDate
+        val dayNum = c.get(Calendar.DAY_OF_WEEK).toString().toInt()
+        var day : String
+        when (dayNum){
+            1 -> day = "Sun"
+            2 -> day = "Mon"
+            3 -> day = "Tue"
+            4 -> day = "Wed"
+            5 -> day = "Thu"
+            6 -> day = "Fri"
+            else -> day = "Sat"
+        }
+
+        val monthNum = c.get(Calendar.MONTH).toString().toInt()
+        var month : String
+        when (monthNum){
+            0 -> month = "Jan"
+            1 -> month = "Feb"
+            2 -> month = "Mar"
+            3 -> month = "Apr"
+            4 -> month = "May"
+            5 -> month = "Jun"
+            6 -> month = "Jul"
+            7 -> month = "Aug"
+            8 -> month = "Sep"
+            9 -> month = "Oct"
+            10 -> month = "Nov"
+            else -> month = "Dec"
+        }
+        val date = c.get(Calendar.DATE).toString()
+        val year = c.get(Calendar.YEAR).toString()
+
+        val dateToShow = month + " " + date + ", " + year + " (" + day + ")"
+        put(KEY_DATE, dateToShow)
     }
-    fun putDate(date: Date) = put(KEY_DATE, date)
+
+    fun getDDate() = getDate(KEY_DDATE)
+    fun putDDate() {
+        var c = Calendar.getInstance(Locale.getDefault()).time
+        put(KEY_DDATE, c)
+    }
 
     fun getEmotion(): Emotion {
         val emotion = getParseObject(KEY_EMOTION) as Emotion

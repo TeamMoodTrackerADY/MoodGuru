@@ -116,8 +116,12 @@
                 android:lineSpacingExtra="0sp"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
+<<<<<<< HEAD
                 android:text="suggestion2"
                 android:textSize="17sp" />
+=======
+                android:textSize="17sp"/>
+>>>>>>> 91b9e9bbe6cac248b28a013e5d1df5a4f6471182
             <TextView
                 android:id="@+id/tvDetailSuggestion3"
                 android:layout_width="match_parent"

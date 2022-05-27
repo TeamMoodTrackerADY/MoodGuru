@@ -50,6 +50,7 @@ class DashboardFragment : Fragment() {
         queryPosts()
     }
 
+
     // Query for all posts in our server
     open fun queryPosts(){
         // Specify which class to query
@@ -70,7 +71,7 @@ class DashboardFragment : Fragment() {
                 }else{
                     if (posts != null){
                         for (post in posts){
-                            Log.i(TAG, "Post: " + post.getJournal() + ", Date: " + post.getCreatedDate())
+                            Log.i(TAG, "Post: " + post.getJournal() + ", Date: " + post.getDate())
                         }
                         allPosts.addAll(posts)
                         adapter.notifyDataSetChanged()
