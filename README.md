@@ -42,7 +42,7 @@ For future milestones, we will work on
 As a user, I want to keep track of my mental health using these features:
 - [x] Select adjective(s) that represents their feelings for certain moments of their days.
 - [x] Rate their emotions on a scale of 1-5
-- [ ] Look at a chart to visualize the changes of their emotion over time.
+- [x] Look at a chart to visualize the changes of their emotion over time.
 - [x] Write events, comments or self-motivation specific to that emotion. 
 - [x] Receive suggestions on how to motivate themselves
 
