@@ -97,8 +97,8 @@ class ChartFragment : Fragment() {
         Log.i(TAG, "size: " + dateList.size + ", x values: " + dateList[0].toString() + " and " + dateList[dateList.size-1].toString())
 
         graphView.getViewport().setYAxisBoundsManual(true)
-        graphView.getViewport().setMinY(-1.0)
-        graphView.getViewport().setMaxY(1.0)
+        graphView.getViewport().setMinY(-5.0)
+        graphView.getViewport().setMaxY(5.0)
         graphView.getViewport().setScrollable(true)
 
         if (toRecent){
@@ -144,7 +144,7 @@ class ChartFragment : Fragment() {
                 dayCount++
             }
             Log.i(TAG, "Date: " + chart.getDate() + ", avg rating: " + chart.getAvgRating())
-            ratingMap.put(formatter.parse(formatter.format(chart.getDDate())), chart.getAvgRating()!!.toDouble())
+            ratingMap.put(formatter.parse(formatter.format(chart.getDDate())), chart.getAvgRating()!!.toDouble() * 5.0)
         }
         return ratingMap
     }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.example.moodguru.fragments.ChartFragment
@@ -14,6 +15,8 @@ import com.example.moodguru.fragments.EmotionFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ComposeActivity : AppCompatActivity() {
+
+    var emojiSelected = false;
     companion object{
         val CONTINUE = "Continue"
         val SAVE = "Save"
@@ -66,20 +69,27 @@ class ComposeActivity : AppCompatActivity() {
             when(btnNext.text){
                 CONTINUE -> {
                     // TODO: send data from emotion to compose
-                    fragmentToShow = ComposeFragment()
-                    supportFragmentManager.commit {
-                        setCustomAnimations(
-                            R.anim.slide_in_right,
-                            R.anim.slide_out_left,
-                            R.anim.fade_in,
-                            R.anim.fade_out
-                        )
-                        replace(R.id.frgContainer, fragmentToShow)
-                        addToBackStack(null)
+                    if (emojiSelected){
+                        fragmentToShow = ComposeFragment()
+                        supportFragmentManager.commit {
+                            setCustomAnimations(
+                                R.anim.slide_in_right,
+                                R.anim.slide_out_left,
+                                R.anim.fade_in,
+                                R.anim.fade_out
+                            )
+                            replace(R.id.frgContainer, fragmentToShow)
+                            addToBackStack(null)
+                        }
+                        btnPrev.text = BACK
+                        btnNext.text = SAVE
+                        btnNext.visibility = View.GONE
+                    } else{
+                        Toast.makeText(this, "Select an emoji to continue", Toast.LENGTH_SHORT)
+                            .show()
+                        emojiSelected = true
                     }
-                    btnPrev.text = BACK
-                    btnNext.text = SAVE
-                    btnNext.visibility = View.GONE
+
                 }
                 SAVE -> {
                     // TODO: send data from composeFragment to Suggestion

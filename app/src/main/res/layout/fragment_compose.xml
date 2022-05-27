@@ -45,6 +45,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:layout_gravity="center_vertical"
             android:text="Positivity score:"
+            android:id="@+id/labelScore"
             android:layout_marginEnd="5dp"
             android:gravity="center_horizontal"/>
         <RatingBar
