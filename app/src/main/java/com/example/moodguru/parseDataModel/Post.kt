@@ -19,6 +19,8 @@ class Post: ParseObject() {
 
         val KEY_SUGGESTION = "advice"
         val KEY_DATE = "localTime"
+        val KEY_DDATE = "dateTypeDate"
+
         val KEY_EMOTION = "emotion"
 
         val KEY_QUOTE = "quote"
@@ -47,11 +49,12 @@ class Post: ParseObject() {
     fun getQuote() = getString(KEY_QUOTE)
     fun putQuote(quote: String) = put(KEY_QUOTE, quote)
 
-    fun getDate(): String {
+    fun getDate() = getString(KEY_DATE)
+    fun putDate() {
         var c = Calendar.getInstance(Locale.getDefault())
 //        confirm local time:
-//        Log.i("time", c.get(Calendar.HOUR).toString())
-//        Log.i("time", c.get(Calendar.MINUTE).toString())
+        Log.i("time", c.get(Calendar.HOUR).toString())
+        Log.i("time", c.get(Calendar.MINUTE).toString())
 
         val dayNum = c.get(Calendar.DAY_OF_WEEK).toString().toInt()
         var day : String
@@ -85,9 +88,14 @@ class Post: ParseObject() {
         val year = c.get(Calendar.YEAR).toString()
 
         val dateToShow = month + " " + date + ", " + year + " (" + day + ")"
-        return dateToShow
+        put(KEY_DATE, dateToShow)
     }
-    fun putDate(date: String) = put(KEY_DATE, date)
+
+    fun getDDate() = getDate(KEY_DDATE)
+    fun putDDate() {
+        var c = Calendar.getInstance(Locale.getDefault()).time
+        put(KEY_DDATE, c)
+    }
 
     fun getEmotion(): Emotion {
         val emotion = getParseObject(KEY_EMOTION) as Emotion

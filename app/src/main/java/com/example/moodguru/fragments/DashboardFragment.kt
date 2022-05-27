@@ -52,6 +52,7 @@ class DashboardFragment : Fragment() {
         queryPosts()
     }
 
+
     // Query for all posts in our server
     open fun queryPosts(){
         // Specify which class to query
