@@ -1,16 +1,13 @@
 package com.example.moodguru.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moodguru.DetailPostActivity
 import com.example.moodguru.PostAdapter
 import com.example.moodguru.R
 import com.example.moodguru.parseDataModel.Post

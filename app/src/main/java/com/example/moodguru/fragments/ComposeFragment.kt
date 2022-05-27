@@ -19,9 +19,6 @@ import com.example.moodguru.EmotionAnalyzer
 import com.example.moodguru.R
 import com.example.moodguru.SuggestionActivity
 import com.example.moodguru.parseDataModel.Emotion
-//import com.vader.sentiment.analyzer.SentimentAnalyzer
-
-//import com.vader.sentiment.analyzer.SentimentAnalyzer
 
 class ComposeFragment : Fragment() {
 
@@ -102,11 +99,6 @@ class ComposeFragment : Fragment() {
            override fun afterTextChanged(s: Editable?) {}
 
        })
-        
-//        ivEmoji.setOnClickListener {
-////            EmotionFragment.showEmotionFragment(requireActivity().supportFragmentManager)
-//            EmotionFragment.newInstance().show(requireActivity().supportFragmentManager, TAG)
-//        }
 
         // Send current adjective & rating to SuggestionActivity
         btnContinue.setOnClickListener {
@@ -131,7 +123,7 @@ class ComposeFragment : Fragment() {
                 i.putExtra(KEY_RATING_TO_SUGG, ratingToSend)
                 startActivity(i)
 
-                // TODO: Transition to Suggestion screen
+                // Transition to Suggestion screen
                 activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
         }
