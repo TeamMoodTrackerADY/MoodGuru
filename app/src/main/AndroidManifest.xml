@@ -17,8 +17,14 @@
         android:theme="@style/Theme.MoodGuru"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ComposeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+
+        <activity
             android:name=".DetailPostActivity"
             android:exported="false" />
+
         <meta-data
             android:name="com.parse.SERVER_URL"
             android:value="@string/back4app_server_url" />
@@ -34,7 +40,7 @@
 
         <activity
             android:name=".SuggestionActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -46,8 +52,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"
-            android:exported="false"></activity>
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
     </application>
 
 </manifest>
