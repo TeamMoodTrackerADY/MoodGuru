@@ -1,5 +1,6 @@
 package com.example.moodguru
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -57,41 +58,50 @@ class MainActivity : AppCompatActivity() {
 
                 // compose button listener
                 R.id.action_compose -> {
-                    fragmentToShow = ComposeFragment()
+                    //fragmentToShow = ComposeFragment()
 
-                    if (selectedFragment == R.id.action_chart) {
-                        fragmentManager.commit {
-                            setCustomAnimations(
-                                R.anim.slide_in_left,
-                                R.anim.slide_out_right,
-                                R.anim.fade_in,
-                                R.anim.fade_out
-                            )
-                            replace(R.id.frgContainer, fragmentToShow)
-                            addToBackStack(null)
-                        }
-                    }
-
-                    if (selectedFragment == R.id.action_compose) {
-                        fragmentManager.commit {
-                            replace(R.id.frgContainer, fragmentToShow)
-                        }
-                    }
-
+//                    if (selectedFragment == R.id.action_chart) {
+//                        fragmentManager.commit {
+//                            setCustomAnimations(
+//                                R.anim.slide_in_left,
+//                                R.anim.slide_out_right,
+//                                R.anim.fade_in,
+//                                R.anim.fade_out
+//                            )
+//                            replace(R.id.frgContainer, fragmentToShow)
+//                            addToBackStack(null)
+//                        }
+//                    }
+//
+//                    if (selectedFragment == R.id.action_compose) {
+//                        fragmentManager.commit {
+//                            replace(R.id.frgContainer, fragmentToShow)
+//                        }
+//                    }
+//
+//                    if (selectedFragment == R.id.action_dashboard) {
+//                        fragmentManager.commit {
+//                            setCustomAnimations(
+//                                R.anim.slide_in_right,
+//                                R.anim.slide_out_left,
+//                                R.anim.fade_in,
+//                                R.anim.fade_out
+//                            )
+//                            replace(R.id.frgContainer, fragmentToShow)
+//                            addToBackStack(null)
+//                        }
+//                    }
+//                    selectedFragment = R.id.action_compose
+                    val intent = Intent(this, ComposeActivity::class.java)
+                    startActivity(intent)
                     if (selectedFragment == R.id.action_dashboard) {
-                        fragmentManager.commit {
-                            setCustomAnimations(
-                                R.anim.slide_in_right,
-                                R.anim.slide_out_left,
-                                R.anim.fade_in,
-                                R.anim.fade_out
-                            )
-                            replace(R.id.frgContainer, fragmentToShow)
-                            addToBackStack(null)
-                        }
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     }
-
+                    else if (selectedFragment == R.id.action_chart) {
+                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                    }
                     selectedFragment = R.id.action_compose
+
                 }
 
                 // chart button listener

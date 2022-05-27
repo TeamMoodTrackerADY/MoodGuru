@@ -111,7 +111,6 @@ class ComposeFragment : Fragment() {
         // Send current adjective & rating to SuggestionActivity
         btnContinue.setOnClickListener {
             val i = Intent(requireContext(), SuggestionActivity::class.java)
-//            Log.d(TAG, "rating is: " + ratingBar.rating)
 
             if (adjToSend == null){
                 Toast.makeText(requireContext(),
@@ -131,6 +130,9 @@ class ComposeFragment : Fragment() {
 
                 i.putExtra(KEY_RATING_TO_SUGG, ratingToSend)
                 startActivity(i)
+
+                // TODO: Transition to Suggestion screen
+                activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
         }
     }

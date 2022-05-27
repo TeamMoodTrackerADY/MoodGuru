@@ -140,6 +140,7 @@ class SuggestionActivity : AppCompatActivity() {
                         // Go back to the Compose screen
                         findViewById<Button>(R.id.backBtn).setOnClickListener {
                             finish()
+                            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
                         }
                     }
                 }
