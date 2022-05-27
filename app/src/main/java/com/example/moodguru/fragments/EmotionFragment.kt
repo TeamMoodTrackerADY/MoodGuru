@@ -1,5 +1,6 @@
 package com.example.moodguru.fragments
 
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moodguru.ComposeActivity
 import com.example.moodguru.EmotionAdapter
 import com.example.moodguru.R
 import com.example.moodguru.parseDataModel.Emotion
@@ -43,6 +45,8 @@ class EmotionFragment : Fragment() {
         emotionAdapter = EmotionAdapter(requireContext(), emotionList, object : EmotionAdapter.OnSelectHandler{
             override fun onSelect(emotion: Emotion) {
 //                Toast.makeText(requireContext(), emotion.getAdjective() + " is selected", Toast.LENGTH_SHORT).show()
+                val intent = Intent(activity, ComposeActivity::class.java)
+                intent.putExtra("selected", true)
                 setFragmentResult(ComposeFragment.KEY_REQUEST_EMO, bundleOf(KEY_SELECT_EMO to emotion))
             }
 

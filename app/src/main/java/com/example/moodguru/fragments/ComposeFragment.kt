@@ -27,6 +27,7 @@ class ComposeFragment : Fragment() {
     lateinit var btnContinue: Button
     lateinit var tvEmotionLabel: TextView
     lateinit var ratingBar: RatingBar
+    lateinit var labelScore: TextView
 
     var adjToSend:String? = null
     var ratingToSend:Float = 0F
@@ -82,6 +83,7 @@ class ComposeFragment : Fragment() {
         tvEmotionLabel = view.findViewById(R.id.tvEmotionLabel)
         btnContinue = view.findViewById(R.id.btnContinue)
         ratingBar = view.findViewById(R.id.rbEmotionLevel)
+        labelScore = view.findViewById(R.id.labelScore)
 
 
 //        EmotionAnalyzer.create().analyze("This is a freaking mad day. God I love it!")
@@ -134,6 +136,11 @@ class ComposeFragment : Fragment() {
         ratingBar.rating = Math.abs(rating * 5.0).toFloat()
         var color: Int = R.color.grey
         val r = (rating * 5.0).toFloat()
+        if (r >= 0){
+            labelScore.text = "Positivity Score: "
+        } else{
+            labelScore.text = "Negativity Score: "
+        }
         when{
             r >= 4 -> color = R.color.orange_5
             r >= 3 -> color = R.color.orange_4
